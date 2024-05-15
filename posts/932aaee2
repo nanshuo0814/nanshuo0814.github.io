@@ -1,0 +1,926 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SpringBoot的pom.xml依赖 | 烁烁南光</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/nanshuo/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.11.0"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"><!-- swiper--><!-- fancybox ui--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.min.css"><!-- katex--><!-- Open Graph--><meta name="description" content="SpringBoot项目常用的pom.xml依赖总结关于一些springboot项目常用到的依赖坐标，基于maven项目 pom.xmlpom.xml是Maven项目的核心配置文件，其中包含了项目的依赖、插件、构建配置等重要信息。下面是一个pom.xml的示例： 1234567891011121"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="烁烁南光"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/nanshuo/favicon.png"><link rel="apple-touch-icon" href="/img/nanshuo/favicon.png" sizes="180x180"><script>console.log(
+    "%c Program: Hexo %c Theme: Solitude %c Version: v1.11.0",
+    "border-radius:5px 0 0 5px;padding: 5px 10px;color:white;background:#ff3842;",
+    "padding: 5px 10px;color:white;background:#3e9f50;",
+    "padding: 5px 10px;color:white;background:#0084ff;border-radius:0 5px 5px 0",
+)
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+    
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+    
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+    
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+    
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+        
+                if (name && keyObj[name]) return
+        
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+        }
+    })()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: {"appId":"J4WYQZZC26","apiKey":"7de0fc8f9b9914acc47bb7b08c9e12be","indexName":"ssng","hits":{"per_page":6}},
+    localsearch: undefined,
+    runtime: '2023-08-14 00:00:00',
+    lazyload: {
+        enable: true,
+        error: '/img/error_load.webp'
+    },
+    copyright: {"limit":50,"author":"作者: 南烁","link":"链接: ","source":"来源: 烁烁南光","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+        syntax: 'highlight.js'
+    },
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。"},"barrage":{"title":"热评"}},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: ["🤖️ 数码科技爱好者","🔍 热爱探索新事物","🏠 智能家居小能手","🔑 设计开发一把手","😀 乐观向上阳春人","👣 脚踏实地行动派","👀 眼里有光大学生","🌙 逆光而行潜行者"],
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {"avatar":"https://cravatar.cn","commentBarrage":true},
+    lightbox: 'fancybox',
+    post_ai: false,
+    right_menu: {"mode":{"dark":"深色模式","light":"浅色模式"},"img_error":"此图片无法复制与下载","music":{"start":"播放音乐","stop":"暂停音乐"},"barrage":{"open":"显示热评","close":"关闭热评"},"translate":{"translateDelay":0,"defaultEncoding":2}},
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: true,
+    ai_text: false
+}</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="烁烁南光" type="application/atom+xml">
+</head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/img/nanshuo/about/ikun.jpg" alt="loading image"></div></div><script>const preloader = {
+    endLoading: () => {
+        document.getElementById('loading-box').classList.toggle('loaded');
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+    },
+    removePaceDone: () => {
+        document.getElementById('body').classList = 'pace-done';
+    }
+}
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});</script><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><div class="author-content-item-title">最新评论<a class="recent-comment-more" href="/recentcomments/" title="最近评论"><i class="solitude st-right-btn-fill"></i></a></div></div><div class="aside-list"></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">标签</div><div class="author-content-item-title">寻找感兴趣的领域</div></div><div class="card-tag-cloud"><a href="/tags/ChatGPT/">ChatGPT<sup>1</sup></a><a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA<sup>1</sup></a><a href="/tags/Java/">Java<sup>3</sup></a><a href="/tags/git/">git<sup>1</sup></a><a href="/tags/docker/">docker<sup>1</sup></a><a href="/tags/Linux/">Linux<sup>1</sup></a><a href="/tags/CentOS/">CentOS<sup>1</sup></a><a href="/tags/nginx/">nginx<sup>1</sup></a><a href="/tags/SpringBoot/">SpringBoot<sup>1</sup></a><a href="/tags/Vue/">Vue<sup>1</sup></a></div></div><div class="console-card history" onclick="sco.hideConsole()"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">2024/03</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">2023/02</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">2023/01</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">2022/12</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">2022/11</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li></ul></div></div></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div><div class="console-btn-item" id="consoleMusic" onclick="sco.musicToggle()"><span class="music-switch" title="音乐开关"><i class="solitude st-disc-fill"></i></span></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><span class="commentBarrage"><i class="solitude st-chat-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://nanshuo.icu" title="halo-blog"><img class="nolazyload back-menu-item-icon" src="/img/nanshuo/favicon.png" alt="halo-blog"><span class="back-menu-item-text">halo-blog</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.nanshuo.icu" title="站长导航网站"><img class="nolazyload back-menu-item-icon" src="/img/nanshuo/avatar.png" alt="站长导航网站"><span class="back-menu-item-text">站长导航网站</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>站长</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tlink/"><i class="solitude  st-tools-fill"></i><span>工具箱</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li><li><a class="site-page child" href="/about/"><i class="solitude  st-contacts-fill"></i><span>关于站长</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/ChatGPT/">ChatGPT<sup>1</sup></a><a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA<sup>1</sup></a><a href="/tags/Java/">Java<sup>3</sup></a><a href="/tags/git/">git<sup>1</sup></a><a href="/tags/docker/">docker<sup>1</sup></a><a href="/tags/Linux/">Linux<sup>1</sup></a><a href="/tags/CentOS/">CentOS<sup>1</sup></a><a href="/tags/nginx/">nginx<sup>1</sup></a><a href="/tags/SpringBoot/">SpringBoot<sup>1</sup></a><a href="/tags/Vue/">Vue<sup>1</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude st-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://nanshuo.icu" title="halo-blog"><img class="nolazyload back-menu-item-icon" src="/img/nanshuo/favicon.png" alt="halo-blog"><span class="back-menu-item-text">halo-blog</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.nanshuo.icu" title="站长导航网站"><img class="nolazyload back-menu-item-icon" src="/img/nanshuo/avatar.png" alt="站长导航网站"><span class="back-menu-item-text">站长导航网站</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">烁烁南光</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">SpringBoot的pom.xml依赖</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>站长</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tlink/"><i class="solitude  st-tools-fill"></i><span>工具箱</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li><li><a class="site-page child" href="/about/"><i class="solitude  st-contacts-fill"></i><span>关于站长</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="travellings_button"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html" title=""><i class="solitude st-train-line"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="solitude st-dice-line"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索"><i class="solitude st-search-line"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="solitude st-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude st-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://ypycdn.nanshuo.icu/posts/springboot/springboott.webp" alt="SpringBoot的pom.xml依赖"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/Java/">Java</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SpringBoot/"><span class="tags-name tags-punctuation">SpringBoot</span></a></div></div></div></div><h1 class="post-title">SpringBoot的pom.xml依赖</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2022-12-12 00:00:00"><i class="post-meta-icon solitude st-calendar-todo-fill"></i><time datetime="2022-12-11T16:00:00.000Z">2022-12-11T16:00:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2024-05-15 22:00:49"><i class="post-meta-icon solitude st-refresh-line"></i><time datetime="2024-05-15T14:00:49.713Z">2024-05-15T14:00:49.713Z</time></span><span class="post-meta-wordcount"><i class="post-meta-icon solitude st-word-fill" title="文章字数"></i><span class="word-count">14k</span><span class="post-meta-separator"></span><i class="post-meta-icon solitude st-clock-fill" title="阅读耗时"></i><span>59 min</span></span><span class="post-meta-position" title="作者IP归属地为广东"><i class="post-meta-icon solitude st-map-pin-fill"></i><span>广东</span></span><a class="post-meta-pv" href="/posts/932aaee2" title="文章热度"><i class="post-meta-icon solitude st-fire-fill"></i><span class="waline-pageview-count"><i class="solitude st-loading-line"></i></span></a><span class="post-meta-commentcount" title="评论数" onclick="sco.scrollTo('post-comment')"><i class="solitude st-chat-fill"></i><a href="/posts/932aaee2#post-comment"><span class="waline-comment-count"><i class="solitude st-loading-line"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>SpringBoot项目常用的pom.xml依赖<br>总结关于一些springboot项目常用到的依赖坐标，基于maven项目</p>
+</blockquote>
+<h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><p>pom.xml是Maven项目的核心配置文件，其中包含了项目的依赖、插件、构建配置等重要信息。下面是一个pom.xml的示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">         </span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>myproject<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.26<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，project是根元素，modelVersion指定POM模型的版本号，groupId指定项目的包名，artifactId指定项目的名称，version指定项目的版本号。dependencies指定项目的依赖，可以添加多个dependency元素，每个dependency指定一个依赖项的groupId、artifactId和version。build指定项目的构建配置，其中plugins指定构建过程中使用的插件，可以添加多个plugin元素，每个plugin指定一个插件的groupId、artifactId和version。</p>
+<p>在这个示例中，项目依赖了Spring Boot、MySQL和MyBatis，并且构建过程中使用了Spring Boot插件。如果有其他需要添加的依赖或插件，可以在pom.xml文件中进行配置。</p>
+<p>总结：</p>
+<p>pom.xml是Maven项目的核心配置文件，其中包含了项目的依赖、插件、构建配置等重要信息。在pom.xml中添加依赖和插件可以简化项目的构建和管理。需要注意配置文件的格式、元素名称、元素属性等规范。</p>
+<h2 id="mysql驱动"><a href="#mysql驱动" class="headerlink" title="mysql驱动"></a>mysql驱动</h2><p>mysql-connector-java是用于Java连接MySQL数据库的驱动程序。它提供了一个标准的Java数据库连接（JDBC）API，可以很方便地使用Java语言与MySQL数据库进行交互。</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    mysql驱动依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.29<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;mysql:mysql-connector-java:&#123;版本号&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>使用mysql-connector-java依赖时，需要先在MySQL数据库中创建相应的数据库和表。在Java代码中，需要使用JDBC API来连接MySQL数据库，并执行相应的操作。</p>
+<p>需要注意的是，mysql-connector-java依赖的版本与MySQL数据库的版本要匹配，否则可能会出现连接失败等问题。</p>
+<p>配置mysql依赖时，不写版本号<version>xx.xx.xx</version>的话，就会引入mysql依赖的默认版本<br>SpringBoot2.1.x之前默认使用的是mysql 5.x版本<br>SpringBoot2.1.x以后默认使用的是mysql8版本<br>在配置数据源的时候，就有差异</p>
+<p>总结：</p>
+<p>mysql-connector-java是用于Java连接MySQL数据库的驱动程序，提供了一个标准的Java数据库连接（JDBC）API。使用mysql-connector-java依赖需要先在MySQL数据库中创建相应的数据库和表，在Java代码中使用JDBC API连接并执行相应的操作。注意版本的匹配。</p>
+<h2 id="mybatis"><a href="#mybatis" class="headerlink" title="mybatis"></a>mybatis</h2><p>mybatis-spring-boot-starter是一个Spring Boot官方提供的MyBatis集成工具，它整合了Spring Boot和MyBatis，可以方便地使用MyBatis的所有功能。</p>
+<p>使用mybatis-spring-boot-starter可以省去配置MyBatis相关的许多繁琐的步骤，例如配置数据源、SqlSessionFactory等，从而让MyBatis开发变得更加简单和高效。</p>
+<p>在Maven项目中，使用mybatis-spring-boot-starter可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    mybatis依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;org.mybatis.spring.boot:mybatis-spring-boot-starter:&#123;版本号&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>使用mybatis-spring-boot-starter依赖后，会自动集成MyBatis和Spring Boot，同时会自动配置数据源、SqlSessionFactory等，并且会自动扫描Mapper接口和映射文件，不需要手动配置。</p>
+<p>需要注意的是，在使用mybatis-spring-boot-starter时，需要在配置文件中配置MyBatis的相关配置，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">mybatis.type-aliases-package=com.example.demo.entity</span> <span class="comment"># 实体类所在包</span></span><br><span class="line"><span class="string">mybatis.mapper-locations=classpath:mapper/**/*.xml</span> <span class="comment"># 映射文件路径</span></span><br></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<p>mybatis-spring-boot-starter是一个Spring Boot官方提供的MyBatis集成工具，整合了Spring Boot和MyBatis，可以方便地使用MyBatis的所有功能。使用mybatis-spring-boot-starter可以省去配置MyBatis相关的许多繁琐的步骤，使得开发变得更加简单和高效。需要注意在配置文件中配置MyBatis的相关配置。</p>
+<h2 id="mybatis-plus"><a href="#mybatis-plus" class="headerlink" title="mybatis-plus"></a>mybatis-plus</h2><p>mybatis-plus是一款基于MyBatis的增强工具，可以简化MyBatis的使用和开发。它提供了一系列的增强功能，如自动生成主键、分页查询、条件构造器等，可以大幅提高开发效率和代码质量。</p>
+<p>使用mybatis-plus依赖可以更加方便地使用这些增强功能，mybatis-plus提供了与Spring Boot的集成依赖mybatis-plus-boot-starter。</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- MyBatis-Plus 的依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;com.baomidou:mybatis-plus-boot-starter:&#123;版本号&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，使用mybatis-plus需要配置mapper扫描路径，如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mybatis-plus.mapper-locations=classpath*:mapper/**/*.xml</span><br></pre></td></tr></table></figure>
+
+<p>此外，需要在数据源配置中添加MyBatis配置，如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">mybatis.type-aliases-package=com.example.demo.entity</span> <span class="comment"># 实体类所在包</span></span><br><span class="line"><span class="string">mybatis.configuration.map-underscore-to-camel-case=true</span> <span class="comment"># 开启驼峰命名转换</span></span><br></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<p>mybatis-plus是一款基于MyBatis的增强工具，可以简化MyBatis的使用和开发，提供了一系列的增强功能。使用该工具需要添加mybatis-plus-boot-starter依赖，并在配置文件中添加mapper扫描路径和MyBatis配置。mybatis-plus与Spring Boot集成，可以更加方便地使用。</p>
+<h2 id="Druid数据库连接池"><a href="#Druid数据库连接池" class="headerlink" title="Druid数据库连接池"></a>Druid数据库连接池</h2><p>druid-spring-boot-starter是Spring Boot集成Druid数据库连接池的依赖，可以简化Druid的使用和配置。</p>
+<p>Druid是阿里巴巴开源的一个高效、可靠的数据库连接池，具有监控、日志功能，可以有效地提高数据库连接的使用效率和安全性。</p>
+<p>使用druid-spring-boot-starter依赖可以更加方便地集成Druid到Spring Boot项目中，开发者只需要在配置文件中添加Druid的相关配置，即可自动创建DataSource对象，并启用Druid的监控和日志功能。</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.23<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;com.alibaba:druid-spring-boot-starter:&#123;版本号&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，使用druid-spring-boot-starter依赖时，需要在配置文件中添加Druid的相关配置，如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">spring.datasource.url=jdbc:mysql://localhost:3306/test</span></span><br><span class="line"><span class="string">spring.datasource.username=root</span></span><br><span class="line"><span class="string">spring.datasource.password=123456</span></span><br><span class="line"><span class="string">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Druid configuration</span></span><br><span class="line"><span class="string">spring.datasource.type=com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="string">spring.datasource.druid.initial-size=5</span></span><br><span class="line"><span class="string">spring.datasource.druid.min-idle=5</span></span><br><span class="line"><span class="string">spring.datasource.druid.max-active=20</span></span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，spring.datasource.type&#x3D;com.alibaba.druid.pool.DruidDataSource 表示使用Druid数据源，spring.datasource.druid.xxx 表示Druid的相关配置。</p>
+<p>总结：</p>
+<p>druid-spring-boot-starter是Spring Boot集成Druid数据库连接池的依赖，可以简化Druid的使用和配置。使用该依赖需要在配置文件中添加Druid的相关配置，开发者可以根据自己的需求进行配置。Druid具有监控、日志等功能，可以有效提高数据库连接的使用效率和安全性。</p>
+<p><font color="#00c4b6" size="5">springboot相关依赖</font></p>
+<h2 id="父依赖"><a href="#父依赖" class="headerlink" title="父依赖"></a>父依赖</h2><p>spring-boot-starter-parent是Spring Boot提供的一个“父项目”依赖，它包含了一些默认的配置和依赖管理，可以帮助开发者更快速地搭建和管理基于Spring Boot的项目。</p>
+<p>使用spring-boot-starter-parent依赖时，可以继承该依赖并在pom.xml文件中指定自己的项目信息和依赖，而无需手动配置Spring Boot的版本号和其他一些常用的依赖。</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>&#123;版本号&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#x27;org.springframework.boot&#x27; version &#x27;&#123;版本号&#125;&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#x27;org.springframework.boot:spring-boot-starter&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，spring-boot-starter-parent并不包含所有的依赖，它只包含了一些常用的依赖管理和默认配置，如Java版本、编码方式、资源过滤等。在实际开发中，开发者还需要根据自己的需求手动添加其他的依赖。</p>
+<p>总结：</p>
+<p>spring-boot-starter-parent是Spring Boot提供的一个“父项目”依赖，包含了一些默认的配置和依赖管理，可以帮助开发者更快速地搭建和管理基于Spring Boot的项目。在使用该依赖时，需要继承该依赖并在pom.xml文件中指定自己的项目信息和依赖。需要注意的是，该依赖并不包含所有的依赖，需要根据实际需求手动添加其他依赖。</p>
+<h2 id="spring-boot-starter"><a href="#spring-boot-starter" class="headerlink" title="spring-boot-starter"></a>spring-boot-starter</h2><p>spring-boot-starter是Spring Boot提供的一个基础依赖，包含了Spring框架和常用的第三方库等组件，可以帮助开发者快速构建基于Spring的应用程序。</p>
+<p>添加spring-boot-starter依赖可以避免繁琐的依赖管理，因为该依赖已经封装了常用的依赖配置，可以自动引入相关的jar包。</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;org.springframework.boot:spring-boot-starter&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>使用spring-boot-starter依赖，可以轻松地使用Spring Boot提供的各种功能和组件，例如：自动配置、日志、数据库访问、Web开发、安全框架等。开发者只需要编写业务逻辑代码，即可快速搭建一个基于Spring Boot的应用程序。</p>
+<p>需要注意的是，spring-boot-starter并不是一个完整的依赖，它只是一个聚合依赖，包含了多个子依赖。具体使用时，需要根据实际需求选择相应的子依赖。例如，如果需要使用Web开发功能，可以添加spring-boot-starter-web依赖；如果需要使用数据库访问功能，可以添加spring-boot-starter-data-jpa或spring-boot-starter-jdbc等依赖。</p>
+<p>总结：</p>
+<p>spring-boot-starter是Spring Boot提供的一个基础依赖，包含了Spring框架和常用的第三方库等组件，可以帮助开发者快速构建基于Spring的应用程序。开发者可以根据实际需求选择相应的子依赖，例如：spring-boot-starter-web、spring-boot-starter-data-jpa等。使用spring-boot-starter可以避免繁琐的依赖管理，提高开发效率。</p>
+<h2 id="Web依赖"><a href="#Web依赖" class="headerlink" title="Web依赖"></a>Web依赖</h2><p>spring-boot-starter-web是Spring Boot提供的一个Web应用程序开发的依赖，包含了Spring MVC、Tomcat、Jackson等常用的Web框架和组件，可以帮助开发者更方便地进行Web应用程序开发。</p>
+<p>在Spring Boot中，可以通过添加spring-boot-starter-web依赖来使用Spring MVC和Tomcat等Web组件：</p>
+<p>用于web开发场景，包含了 RESTful 和 Spring MVC，并且默认使用了内置的Tomcat服务器。<br>支持注解：@RestController、@RequestMapping、@ResponseBody</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    springWeb依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;org.springframework.boot:spring-boot-starter-web&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>使用Spring Boot和Spring MVC进行Web开发时，可以像使用普通的Spring MVC一样编写控制器和视图等组件。例如，下面是一个简单的Spring MVC控制器示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">(Model model)</span> &#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;Hello, Spring Boot!&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上控制器使用@GetMapping注解映射了&#x2F;hello路径，并在其中使用了Spring MVC的Model类来传递数据到视图中。在返回值中指定了视图名称hello，Spring Boot会自动查找名为hello的Thymeleaf模板文件。</p>
+<p>需要注意的是，在使用Spring Boot进行Web开发时，还需要在Spring Boot应用程序的配置文件application.properties或application.yml中配置Web服务器的相关属性，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server.port=8080</span><br><span class="line">server.servlet.context-path=/</span><br></pre></td></tr></table></figure>
+
+<p>以上配置中，指定了Web服务器的端口号和上下文路径。</p>
+<p>总结：</p>
+<p>spring-boot-starter-web是Spring Boot提供的一个Web应用程序开发的依赖，包含了Spring MVC、Tomcat、Jackson等常用的Web框架和组件。在使用Spring Boot和Spring MVC进行Web开发时，可以像使用普通的Spring MVC一样编写控制器和视图等组件，同时还需要在配置文件中配置Web服务器的相关属性。</p>
+<h2 id="Thymeleaf依赖"><a href="#Thymeleaf依赖" class="headerlink" title="Thymeleaf依赖"></a>Thymeleaf依赖</h2><p>spring-boot-starter-thymeleaf是Spring Boot提供的一个基于Thymeleaf模板引擎的依赖，可以帮助开发者更方便地进行Web开发。Thymeleaf是一个Java模板引擎，通过标签和属性来定义模板，可以方便地在模板中使用动态数据、表达式和条件判断等。</p>
+<p>thymeleaf是一个很强大的视图解析工具,SpringBoot支持的thymeleaf页面模板技术<br>默认存放模板页面的路径在src&#x2F;main&#x2F;resources&#x2F;templates 或者 src&#x2F;main&#x2F;view&#x2F;templates,默认的页面文件后缀是.html</p>
+<p>在Spring Boot中，可以通过添加spring-boot-starter-thymeleaf依赖来使用Thymeleaf模板引擎：</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- thymeleaf --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;org.springframework.boot:spring-boot-starter-thymeleaf&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>使用Spring Boot和Thymeleaf进行Web开发时，可以像使用普通HTML一样编写模板，并在其中使用Thymeleaf标签和属性来定义动态数据和表达式。例如，下面是一个包含了Thymeleaf标签和属性的模板示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Thymeleaf Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;title&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:if</span>=<span class="string">&quot;$&#123;showMessage&#125;&quot;</span>&gt;</span>Hello, Thymeleaf!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">th:each</span>=<span class="string">&quot;item : $&#123;items&#125;&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;item&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>以上模板中，使用了Thymeleaf的th:text、th:if和th:each属性来定义动态数据、条件判断和循环等操作。</p>
+<p>需要注意的是，在使用Thymeleaf进行Web开发时，还需要在Spring Boot应用程序的配置文件application.properties或application.yml中配置模板引擎的相关属性，如下所示：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">spring.thymeleaf.prefix=classpath:/templates/</span></span><br><span class="line"><span class="string">spring.thymeleaf.suffix=.html</span></span><br><span class="line"><span class="string">spring.thymeleaf.cache=false</span></span><br></pre></td></tr></table></figure>
+
+<p>以上配置中，指定了模板文件的位置和后缀、是否开启模板缓存等属性。</p>
+<p>总结：</p>
+<p>spring-boot-starter-thymeleaf是Spring Boot提供的一个基于Thymeleaf模板引擎的依赖，可以帮助开发者更方便地进行Web开发。使用Thymeleaf进行Web开发时，可以像使用普通HTML一样编写模板，并在其中使用Thymeleaf标签和属性来定义动态数据和表达式，同时还需要在配置文件中配置模板引擎的相关属性。</p>
+<h2 id="单元测试JUnit依赖"><a href="#单元测试JUnit依赖" class="headerlink" title="单元测试JUnit依赖"></a>单元测试JUnit依赖</h2><p>spring-boot-starter-test是Spring Boot提供的测试依赖，包含了许多在开发和测试中常用的测试框架和工具，如JUnit、Hamcrest、Mockito等，可以帮助开发者更方便地进行单元测试、集成测试和功能测试等。</p>
+<p>在Spring Boot中，可以通过添加spring-boot-starter-test依赖来使用测试框架和工具：</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    单元测试--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testImplementation &#x27;org.springframework.boot:spring-boot-starter-test&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>在添加完依赖后，就可以使用JUnit、Hamcrest、Mockito等测试框架进行单元测试和集成测试了。Spring Boot还提供了一些方便的测试注解和工具类，如@SpringBootTest、@RunWith和TestRestTemplate等，可以帮助开发者更方便地进行功能测试。</p>
+<p>需要注意的是，在进行完整的集成测试时，可能需要启动完整的Spring Boot应用程序。在这种情况下，需要使用@SpringBootTest注解，并指定使用的Spring Boot启动类，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest(classes = MyApplication.class)</span></span><br><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyIntegrationTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MyService myService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在这里编写集成测试代码...</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码中，使用@SpringBootTest注解指定了使用MyApplication作为Spring Boot启动类，在进行集成测试时会启动完整的应用程序。使用@RunWith注解指定了使用SpringRunner作为测试运行器，以便进行Spring集成测试。</p>
+<p>总结：</p>
+<p>spring-boot-starter-test是Spring Boot提供的测试依赖，包含了许多常用的测试框架和工具。在使用时，可以使用JUnit、Hamcrest、Mockito等测试框架进行单元测试和集成测试，并使用@SpringBootTest、@RunWith和TestRestTemplate等测试注解和工具类进行功能测试。</p>
+<h2 id="springboot热部署"><a href="#springboot热部署" class="headerlink" title="springboot热部署"></a>springboot热部署</h2><p>spring-boot-devtools是Spring Boot提供的一个开发工具包，可以帮助开发者在开发过程中自动重启应用程序、禁用模板缓存、提供LiveReload等功能，提高开发效率。该工具包主要依赖于两个模块：spring-boot-devtools和spring-boot-autoconfigure。</p>
+<p>在Spring Boot中，可以通过添加spring-boot-devtools依赖来使用开发工具包：</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    springboot热部署--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runtimeOnly &#x27;org.springframework.boot:spring-boot-devtools&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>添加完依赖后，在IDEA或Eclipse中启用devtools需要进行相应的配置。</p>
+<p>在IDEA中，可以在Preferences -&gt; Build, Execution, Deployment -&gt; Compiler中勾选Build project automatically选项。此外，还需要在Registry中勾选compiler.automake.allow.when.app.running选项。</p>
+<p>在Eclipse中，可以在Preferences -&gt; Workspace中勾选Build automatically选项。</p>
+<p>需要注意的是，在生产环境中可以将spring-boot-devtools依赖移除，以避免自动重启和禁用模板缓存等功能对性能造成影响。</p>
+<p>总结：</p>
+<p>spring-boot-devtools是Spring Boot提供的一个开发工具包，可以提高开发效率。该工具包主要依赖于两个模块：spring-boot-devtools和spring-boot-autoconfigure。在使用时需要进行相应的配置，并在生产环境中移除依赖，以避免影响性能。</p>
+<p>修改java代码后，不用重启项目就能直接最新测试，省略了不断修改代码不断重启项目的麻烦</p>
+<h2 id="aop依赖"><a href="#aop依赖" class="headerlink" title="aop依赖"></a>aop依赖</h2><p>AOP（面向切面编程）是一种编程思想，可以将应用程序业务逻辑和横切关注点（如日志、安全、事务等）分离开来，提高代码的可维护性和复用性。Spring Boot提供了一个简单易用的AOP框架，可以通过添加相应的依赖来使用。</p>
+<p>在Spring Boot中，可以通过添加spring-boot-starter-aop依赖来使用AOP框架：</p>
+<p>在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;org.springframework.boot:spring-boot-starter-aop&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>使用AOP框架的一个常见场景是对方法进行拦截并添加额外的逻辑，如打印日志、记录性能指标等。以下是一个使用AOP框架的例子：</p>
+<p>定义一个切面类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoggingAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LoggerFactory.getLogger(LoggingAspect.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;execution(* com.example.myservice..*.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logBefore</span><span class="params">(JoinPoint joinPoint)</span> &#123;</span><br><span class="line">        logger.info(<span class="string">&quot;调用方法：&quot;</span> + joinPoint.getSignature().getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，定义了一个切面类LoggingAspect，并使用@Before注解定义了一个切入点，该切入点会拦截com.example.myservice包中的所有方法，并在方法执行前打印日志。</p>
+<p>需要注意的是，使用AOP时需要配合表达式语言（如AspectJ）来定义切入点，可以在execution()语句中使用通配符(*)来匹配相应的方法。</p>
+<p>在Spring Boot应用程序中启用AOP功能需要在配置类上添加@EnableAspectJAutoProxy注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableAspectJAutoProxy</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyApplication</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(MyApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上配置将开启AOP功能并允许Spring自动代理切面，以便在方法执行时进行拦截。</p>
+<p>总结：</p>
+<p>Spring Boot提供了一个简单易用的AOP框架，可以通过添加spring-boot-starter-aop依赖来使用。使用AOP框架可以将应用程序业务逻辑和横切关注点分离开来，提高代码的可维护性和复用性。在Spring Boot应用程序中启用AOP功能需要在配置类上添加@EnableAspectJAutoProxy注解。</p>
+<h2 id="邮箱依赖"><a href="#邮箱依赖" class="headerlink" title="邮箱依赖"></a>邮箱依赖</h2><p>要用到邮箱登录时使用到该依赖,结合邮箱工具类使用,在Java项目常用工具类的MarkDown文章中有</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- https:<span class="comment">//mvnrepository.com/artifact/javax.mail/mail --&gt;</span></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;javax.mail&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mail&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;<span class="number">1.4</span><span class="number">.7</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- https:<span class="comment">//mvnrepository.com/artifact/org.apache.commons/commons-email --&gt;</span></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;commons-email&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;<span class="number">1.4</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="springboot集成redis"><a href="#springboot集成redis" class="headerlink" title="springboot集成redis"></a>springboot集成redis</h2><p>spring-boot-starter-data-redis是Spring Boot中的一个Redis相关的依赖，它是基于Spring Data Redis实现的，提供了与Redis交互的各种功能和工具。</p>
+<p>在使用spring-boot-starter-data-redis时，只需要在Maven或Gradle中添加相应的依赖即可，例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>该依赖提供了以下功能：</p>
+<ol>
+<li>RedisTemplate：一个通用的Redis操作类，可以执行Redis常见的操作（如SET、GET等），支持多种数据格式（如String、List、Set、ZSet、Hash等）。</li>
+<li>RedisRepository：一个Redis的数据访问接口，支持CRUD操作，类似于JPA中的Repository。</li>
+<li>RedisCacheManager：一个Spring Cache的缓存管理器，可以将数据存储在Redis中，提高访问效率。</li>
+<li>RedisMessageListenerContainer：一个Redis消息监听容器，可以监听Redis中的消息，实现发布-订阅模式。</li>
+<li>RedisConnectionFactory：一个Redis连接工厂，用于创建Redis连接。它可以自动集成Spring Boot中的连接池（如JedisPool、LettuceConnectionPool等）。</li>
+</ol>
+<p>在进行Redis开发时，我们只需要注入相应的RedisTemplate或RedisRepository即可使用Redis的各种功能。</p>
+<p>总结：</p>
+<p>spring-boot-starter-data-redis是Spring Boot中的一个Redis相关的依赖，它提供了与Redis交互的各种功能和工具，包括RedisTemplate、RedisRepository、RedisCacheManager、RedisMessageListenerContainer等。在进行Redis开发时，只需要注入相应的组件即可使用Redis的各种功能。</p>
+<p>Redis是一个高速缓存数据库，是一种key-value（键值对）形式的存储系统，非关系型数据库。<br>Redis的数据 是放在内存里的，所以读写会很快，Redis才能实现持久化（两种实现方式）<br>redis的用处<br>1.用作缓存，优点（1.可以减轻数据库压力 2.可以提高查询效率）<br>2.点赞数，访问量<br>3.鉴权，cookie和session<br>登陆成功后，将对应的可以和value放到redis里，下次如果再进来，先访问redis，如果说key存在，说明登陆过，鉴权通过了，如果key不存在，说明鉴权失败，去重新登陆。</p>
+<h2 id="redisson分布式锁"><a href="#redisson分布式锁" class="headerlink" title="redisson分布式锁"></a>redisson分布式锁</h2><p>Redisson是基于Redis实现的分布式Java对象和服务框架，提供了分布式锁、分布式集合、分布式对象等功能，是一个很好的分布式应用开发工具。在使用Redisson时，可以通过添加Maven或Gradle依赖来集成到Spring Boot项目中。</p>
+<p>例如，在Maven项目中，可以添加如下依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- redisson分布式锁 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.redisson&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;redisson-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.16.6&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在Gradle项目中，可以添加如下依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;org.redisson:redisson-spring-boot-starter:3.14.1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>通过添加这个依赖，我们可以很容易地使用Redisson提供的分布式锁、分布式集合等功能，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 获取分布式锁</span><br><span class="line">RLock lock = redissonClient.getLock(&quot;myLock&quot;);</span><br><span class="line">lock.lock();</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    // 执行业务逻辑</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    lock.unlock();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 获取分布式集合</span><br><span class="line">RSet&lt;String&gt; set = redissonClient.getSet(&quot;mySet&quot;);</span><br><span class="line">set.add(&quot;value1&quot;);</span><br><span class="line">set.add(&quot;value2&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，在使用Redisson时，需要配置相应的Redis连接信息，例如Redis的host、port等，可以通过在配置文件（如application.yml或application.properties）中添加如下配置来实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  redis:</span><br><span class="line">    host: localhost</span><br><span class="line">    port: 6379</span><br></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<p>Redisson是基于Redis实现的分布式Java对象和服务框架，提供了分布式锁、分布式集合等功能，可以通过添加Maven或Gradle依赖来集成到Spring Boot项目中。在使用Redisson时，需要配置相应的Redis连接信息。</p>
+<h2 id="application-properties"><a href="#application-properties" class="headerlink" title="application.properties"></a>application.properties</h2><p>application.properties是Spring Boot中的一个配置文件，用于存储应用程序的配置信息，包括服务器端口、数据库连接、日志级别等。它采用key&#x3D;value的格式，比YAML文件更易学习，但也比较冗长。</p>
+<p>application.properties文件通常存放在src&#x2F;main&#x2F;resources目录下。它的主要作用是为应用程序提供默认的配置信息，开发人员可以在其中指定应用程序所需的任何配置。在Spring Boot应用程序中，我们可以使用@ConfigurationProperties注解将配置文件的属性映射为Java对象的属性，从而更方便地进行读取和操作。</p>
+<p>总结：</p>
+<p>application.properties是Spring Boot中的一个配置文件，用于存储应用程序的配置信息，采用key&#x3D;value的格式，便于开发人员进行配置。它可以在Spring Boot应用程序中使用@ConfigurationProperties注解映射成Java对象，方便读取和操作。配置文件的作用是为应用程序提供默认的配置信息，使得应用程序在启动时可以使用这些配置信息。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">spring.datasource.url</span> <span class="string">=</span> <span class="string">jdbc:mysql://localhost:3306/数据库名称?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</span></span><br><span class="line">        <span class="string">spring.datasource.username</span> <span class="string">=</span> <span class="string">root</span></span><br><span class="line">        <span class="string">spring.datasource.password</span> <span class="string">=</span> <span class="string">root</span></span><br><span class="line">        <span class="string">spring.datasource.driverClassName</span> <span class="string">=</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">        <span class="string">server.port=8080</span> <span class="comment">#项目启动后的端口号，springboot自带tomcat容器</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="application-yml"><a href="#application-yml" class="headerlink" title="application.yml"></a>application.yml</h2><p>application.yml是Spring Boot中的一个配置文件，用于存储应用程序的配置信息，包括服务器端口、数据库连接、日志级别等。它采用YAML语法，比传统的.properties文件更易读、易写。</p>
+<p>application.yml文件通常存放在src&#x2F;main&#x2F;resources目录下。它的主要作用是为应用程序提供默认的配置信息，开发人员可以在其中指定应用程序所需的任何配置。在Spring Boot应用程序中，我们可以使用@ConfigurationProperties注解将配置文件的属性映射为Java对象的属性，从而更方便地进行读取和操作。</p>
+<p>总结：</p>
+<p>application.yml是Spring Boot中的一个配置文件，用于存储应用程序的配置信息，采用YAML语法，便于开发人员进行配置。它可以在Spring Boot应用程序中使用@ConfigurationProperties注解映射成Java对象，方便读取和操作。配置文件的作用是为应用程序提供默认的配置信息，使得应用程序在启动时可以使用这些配置信息。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">项目名称</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">druid:</span></span><br><span class="line">      <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">      <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/数据库名称?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</span></span><br><span class="line">      <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">root</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="security安全框架"><a href="#security安全框架" class="headerlink" title="security安全框架"></a>security安全框架</h2><p>Spring Boot提供了一个名为spring-boot-starter-security的依赖，它可以轻松地将安全性集成到Spring Boot应用程序中。它提供了身份验证和授权功能，支持多种身份验证机制，例如基于表单的身份验证、基于HTTP Basic和Digest的身份验证以及OAuth2和OpenID Connect等。它还提供了许多安全功能，例如HTTPS支持、CSRF保护、Session管理、安全事件监听器等。</p>
+<p>以下是spring-boot-starter-security依赖的主要组件：</p>
+<ol>
+<li>Spring Security：Spring Security是一个基于Spring框架的安全框架，提供了身份验证和授权功能。</li>
+<li>Spring Boot Security Starter：Spring Boot的安全启动器，提供了自动配置和默认配置，使得使用Spring Security的安全功能更加简单。</li>
+<li>Security Filter Chain：Spring Security的过滤器链，用于处理HTTP请求并提供身份验证和授权功能。</li>
+<li>Authentication Providers：身份验证提供者，用于验证用户的身份。</li>
+<li>Authorization Providers：授权提供者，用于授权用户访问资源。</li>
+</ol>
+<p>使用spring-boot-starter-security依赖可以轻松地将安全性集成到Spring Boot应用程序中，并且可以选择使用多种身份验证机制和安全功能，提高应用程序的安全性和可靠性。</p>
+<p>以下是一个基于spring-boot-starter-security的例子：</p>
+<ol>
+<li>添加依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>配置安全性</li>
+</ol>
+<p>在application.properties文件中配置用户凭证和访问权限，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">spring.security.user.name=admin</span></span><br><span class="line"><span class="string">spring.security.user.password=admin123</span></span><br><span class="line"><span class="string">spring.security.user.roles=admin</span></span><br></pre></td></tr></table></figure>
+
+<p>这表示只有用户”admin”能够访问应用程序，并且他具有”admin”角色。</p>
+<ol>
+<li>在代码中使用安全性</li>
+</ol>
+<p>在需要保护的方法上添加@Secured注解，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyController</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="meta">@Secured(&quot;ROLE_ADMIN&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">sayHello</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这表示只有具有”ROLE_ADMIN”角色的用户才能调用该方法。</p>
+<p>总结：</p>
+<p>spring-boot-starter-security为Spring Boot提供了安全性支持，可以轻松地将安全性集成到Spring Boot应用程序中，并提供了多种身份验证机制和安全功能，例如HTTPS支持、CSRF保护、Session管理等。使用该依赖可以提高应用程序的安全性和可靠性。</p>
+<h2 id="springboot缓存"><a href="#springboot缓存" class="headerlink" title="springboot缓存"></a>springboot缓存</h2><p>Spring Boot提供了spring-boot-starter-cache依赖，可用于简化缓存配置。它基于Spring框架的Cache抽象，支持多个缓存提供者，例如EhCache、Redis、Guava等。这个Starter提供了自动配置，使得在你创建并注入一个CacheManager的时候，Spring Boot可以自动配置它。这个Starter还提供了几种流行的缓存依赖，你可以选择使用它们。</p>
+<p>主要组件：</p>
+<ul>
+<li>spring-context：Spring框架的核心容器</li>
+<li>spring-context-support：支持Spring框架的扩展功能</li>
+<li>spring-beans：Spring框架的Bean容器</li>
+<li>spring-aop：Spring框架的AOP实现</li>
+<li>spring-expression：Spring框架的表达式语言</li>
+<li>spring-cache：Spring框架对Cache的抽象</li>
+<li>cache-api：对统一缓存API的封装</li>
+</ul>
+<p>以下是一个基于spring-boot-starter-cache的例子：</p>
+<ol>
+<li>添加依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-cache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>配置缓存</li>
+</ol>
+<p>在application.properties文件中配置缓存提供者，以EhCache为例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.cache.type=ehcache</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在类中使用缓存</li>
+</ol>
+<p>在需要实现缓存的方法上添加@Cacheable注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Cacheable(&quot;myCache&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getMyData</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        <span class="comment">// 这里实现获取数据的逻辑</span></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时，getMyData方法将被自动缓存，下次调用同样的方法并使用相同的参数将不会触发实际的方法调用，而是直接从缓存中获取结果。如果需要刷新缓存，可以使用@CacheEvict注解。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Cacheable(&quot;myCache&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getMyData</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        <span class="comment">// 这里实现获取数据的逻辑</span></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@CacheEvict(&quot;myCache&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">clearCache</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        <span class="comment">// 这里为空，只是用于清空缓存</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在调用clearCache方法时，将清空myCache缓存中的所有内容。</p>
+<p>总结：</p>
+<p>spring-boot-starter-cache为Spring Boot提供了缓存功能的支持，可以简化我们对缓存的配置和使用。缓存提供者可以轻松切换，缓存的使用也非常简单，只需要在需要缓存的方法上添加@Cacheable注解即可。当然，如果需要清空缓存，也可以使用@CacheEvict注解来实现。</p>
+<h2 id="common-pool2"><a href="#common-pool2" class="headerlink" title="common-pool2"></a>common-pool2</h2><p><code>common-pool2</code>是一个通用的对象池组件，提供了复用和管理对象的功能，可以帮助我们优化对象的创建和销毁，从而提高应用程序的性能。</p>
+<p>要在项目中使用<code>common-pool2</code>依赖，可以在pom.xml文件中添加以下依赖关系：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-pool2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>添加该依赖后，我们就可以在应用程序中使用对象池功能了。例如，以下代码片段演示了如何使用<code>common-pool2</code>来管理数据库连接：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.pool2.impl.GenericObjectPool;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.pool2.impl.GenericObjectPoolConfig;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConnectionPool</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> GenericObjectPool&lt;Connection&gt; pool;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ConnectionPool</span><span class="params">(String url, String user, String password)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line">        <span class="type">ConnectionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DriverManagerConnectionFactory</span>(url, user, password);</span><br><span class="line">        <span class="type">GenericObjectPoolConfig</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GenericObjectPoolConfig</span>();</span><br><span class="line">        pool = <span class="keyword">new</span> <span class="title class_">GenericObjectPool</span>&lt;&gt;(factory, config);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Connection <span class="title function_">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">return</span> pool.borrowObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">releaseConnection</span><span class="params">(Connection conn)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        pool.returnObject(conn);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们通过<code>GenericObjectPool</code>类来创建一个对象池，它包含了一些可配置的属性，例如最大空闲对象数、最大活动对象数等等。我们可以将连接工厂类<code>DriverManagerConnectionFactory</code>设置为对象池中的实例工厂。最后，我们通过<code>borrowObject()</code>方法来获取对象，并通过<code>returnObject()</code>方法将对象放回池中。</p>
+<p>在应用程序中，可以通过以下方式使用连接池中的数据库连接：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ConnectionPool</span> <span class="variable">pool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConnectionPool</span>(<span class="string">&quot;jdbc:mysql://localhost/mydb&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;password&quot;</span>);</span><br><span class="line"><span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> pool.getConnection();</span><br><span class="line"><span class="comment">// execute queries with connection</span></span><br><span class="line">pool.releaseConnection(conn);</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们首先创建一个连接池并设置在应用程序中共享。然后，我们通过<code>getConnection()</code>方法从连接池中获取数据库连接，使用完后通过<code>releaseConnection()</code>方法将连接放回池中。</p>
+<p>使用<code>common-pool2</code>可以很好地管理资源，例如数据库连接、线程等等。它可以帮助我们降低对象创建和销毁的开销，提高应用程序的性能。</p>
+<h2 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h2><p><code>spring-boot-starter-websocket</code>是一个Spring Boot的起步依赖，它将Spring WebSocket模块与一个嵌入式的Tomcat WebSocket支持结合在一起。此外，它还包括了其他支持WebSocket开发的相关工具和依赖关系，例如<code>spring-websocket</code>, <code>spring-messaging</code>等等。</p>
+<p>要在项目中使用<code>spring-boot-starter-websocket</code>依赖，可以在pom.xml文件中添加以下依赖关系：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-websocket<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>添加该依赖后，Spring Boot应用程序就可以使用WebSocket来实现双向通信了。你可以通过@Controller注释的类来处理WebSocket请求。例如，以下代码片段演示了如何创建一个简单的WebSocket处理程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebSocketController</span> &#123;</span><br><span class="line">    <span class="meta">@MessageMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="meta">@SendTo(&quot;/topic/greetings&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Greeting <span class="title function_">greet</span><span class="params">(String message)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Greeting</span>(<span class="string">&quot;Hello, &quot;</span> + message + <span class="string">&quot;!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，当客户端发送一个WebSocket请求到<code>/hello</code>时，<code>greet</code>方法将被调用。然后，处理程序会将响应发送回客户端，并将其广播到所有已经订阅了<code>/topic/greetings</code>的客户端。</p>
+<p>在浏览器端，你可以使用JavaScript来创建WebSocket连接并与WebSocket处理程序进行通信。以下是一个使用jQuery的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> socket = <span class="keyword">new</span> <span class="title class_">WebSocket</span>(<span class="string">&#x27;ws://localhost:8080/hello&#x27;</span>);</span><br><span class="line">socket.<span class="property">onmessage</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> greeting = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(event.<span class="property">data</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(greeting.<span class="property">content</span>);</span><br><span class="line">&#125;;</span><br><span class="line">socket.<span class="title function_">send</span>(<span class="string">&#x27;world&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>此会将一个包含字符串”world”的WebSocket消息发送到服务器，并打印从处理程序返回的响应。</p>
+<h2 id="spring-data-jpa"><a href="#spring-data-jpa" class="headerlink" title="spring-data-jpa"></a>spring-data-jpa</h2><p>Spring Data JPA是Spring Framework的一个子项目，用于简化使用JPA进行数据库访问的开发工作。通过Spring Data JPA，我们可以减少大量的样板代码，提高开发效率。要使用Spring Data JPA，需要将其依赖添加到项目中。以下是使用Spring Data JPA的Maven依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-data-jpa&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.5.4&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用Spring Data JPA的示例代码如下：</p>
+<ul>
+<li>定义一个数据实体类：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import javax.persistence.*;</span><br><span class="line"></span><br><span class="line">@Entity</span><br><span class="line">@Table(name = &quot;users&quot;)</span><br><span class="line">public class User &#123;</span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy = GenerationType.IDENTITY)</span><br><span class="line">    private Long id;</span><br><span class="line"></span><br><span class="line">    @Column(nullable = false)</span><br><span class="line">    private String username;</span><br><span class="line"></span><br><span class="line">    @Column(nullable = false)</span><br><span class="line">    private String password;</span><br><span class="line"></span><br><span class="line">    // getter 和 setter 方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义一个Repository接口：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.data.jpa.repository.JpaRepository;</span><br><span class="line"></span><br><span class="line">public interface UserRepository extends JpaRepository&lt;User, Long&gt; &#123;</span><br><span class="line">    User findByUsername(String username);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用了@Entity和@Table注解来定义一个数据实体类User。在定义Repository时，我们继承了JpaRepository接口，并使用泛型指定了实体类类型和主键类型。在Repository中，我们定义了一个findByUsername()方法，用于根据username字段查询User实体。这里的方法名是根据方法名规则自动生成的，即findBy + 属性名。</p>
+<ul>
+<li>在Service中使用Repository：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class UserService &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    public User findByUsername(String username) &#123;</span><br><span class="line">        return userRepository.findByUsername(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public User save(User user) &#123;</span><br><span class="line">        return userRepository.save(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用了@Autowired注解将UserRepository注入到UserService中。在UserService中，我们定义了一个findByUsername()方法和一个save()方法，根据需要调用UserRepository中的方法。由于我们使用了Spring Data JPA，因此可以很方便地使用这些方法对数据库进行访问。</p>
+<p><font color="#00c4b6" size="5">常用第三方工具依赖</font></p>
+<h2 id="hutool依赖"><a href="#hutool依赖" class="headerlink" title="hutool依赖"></a>hutool依赖</h2><p>Hutool是一个小而全的Java工具类库，通过静态方法封装，降低相关API的学习成本，提高工作效率，使Java拥有函数式语言般的优雅，让Java语言也可以“甜甜的”。Hutool的目标是使用一个工具方法代替一段复杂代码，从而最大限度的避免“复制粘贴”代码的问题，彻底改变我们写代码的方式。Hutool是项目中“util”包友好的替代，它节省了开发人员对项目中公用类和公用工具方法的封装时间，使开发专注于业务，同时可以最大限度的避免封装不完善带来的bug。一个Java基础工具类，对文件、流、加密解密、转码、正则、线程、XML等JDK方法进行封装，组成各种Util工具类，同时提供以下组件：也可以根据需求对每个模块单独引入，也可以通过引入<code>hutool-all</code>方式引入所有模块。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--hutool--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;cn.hutool&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">5.7</span><span class="number">.17</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">模块</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">hutool-aop</td>
+<td align="left">JDK动态代理封装，提供非IOC下的切面支持</td>
+</tr>
+<tr>
+<td align="left">hutool-bloomFilter</td>
+<td align="left">布隆过滤，提供一些Hash算法的布隆过滤</td>
+</tr>
+<tr>
+<td align="left">hutool-cache</td>
+<td align="left">简单缓存实现</td>
+</tr>
+<tr>
+<td align="left">hutool-core</td>
+<td align="left">核心，包括Bean操作、日期、各种Util等</td>
+</tr>
+<tr>
+<td align="left">hutool-cron</td>
+<td align="left">定时任务模块，提供类Crontab表达式的定时任务</td>
+</tr>
+<tr>
+<td align="left">hutool-crypto</td>
+<td align="left">加密解密模块，提供对称、非对称和摘要算法封装</td>
+</tr>
+<tr>
+<td align="left">hutool-db</td>
+<td align="left">JDBC封装后的数据操作，基于ActiveRecord思想</td>
+</tr>
+<tr>
+<td align="left">hutool-dfa</td>
+<td align="left">基于DFA模型的多关键字查找</td>
+</tr>
+<tr>
+<td align="left">hutool-extra</td>
+<td align="left">扩展模块，对第三方封装（模板引擎、邮件、Servlet、二维码、Emoji、FTP、分词等）</td>
+</tr>
+<tr>
+<td align="left">hutool-http</td>
+<td align="left">基于HttpUrlConnection的Http客户端封装</td>
+</tr>
+<tr>
+<td align="left">hutool-log</td>
+<td align="left">自动识别日志实现的日志门面</td>
+</tr>
+<tr>
+<td align="left">hutool-script</td>
+<td align="left">脚本执行封装，例如Javascript</td>
+</tr>
+<tr>
+<td align="left">hutool-setting</td>
+<td align="left">功能更强大的Setting配置文件和Properties封装</td>
+</tr>
+<tr>
+<td align="left">hutool-system</td>
+<td align="left">系统参数调用封装（JVM信息等）</td>
+</tr>
+<tr>
+<td align="left">hutool-json</td>
+<td align="left">JSON实现</td>
+</tr>
+<tr>
+<td align="left">hutool-captcha</td>
+<td align="left">图片验证码实现</td>
+</tr>
+<tr>
+<td align="left">hutool-poi</td>
+<td align="left">针对POI中Excel和Word的封装</td>
+</tr>
+<tr>
+<td align="left">hutool-socket</td>
+<td align="left">基于Java的NIO和AIO的Socket封装</td>
+</tr>
+<tr>
+<td align="left">hutool-jwt</td>
+<td align="left">JSON Web Token (JWT)封装实现</td>
+</tr>
+</tbody></table>
+<p>Hutool的一些使用示例代码如下：</p>
+<ul>
+<li>使用StrUtil工具类进行字符串操作：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import cn.hutool.core.util.StrUtil;</span><br><span class="line"></span><br><span class="line">String str = &quot;  hello, world  &quot;;</span><br><span class="line">System.out.println(StrUtil.trim(str)); // 输出&quot;hello, world&quot;</span><br><span class="line">System.out.println(StrUtil.upperFirst(str)); // 输出&quot;  Hello, world  &quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用DateUtil工具类进行日期处理：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import cn.hutool.core.date.DateUtil;</span><br><span class="line"></span><br><span class="line">Date now = new Date();</span><br><span class="line">Date tomorrow = DateUtil.offsetDay(now, 1);</span><br><span class="line">System.out.println(now); // 输出当前时间</span><br><span class="line">System.out.println(tomorrow); // 输出明天的这个时间</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用FileUtil工具类进行文件操作：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import cn.hutool.core.io.FileUtil;</span><br><span class="line"></span><br><span class="line">File file = new File(&quot;/path/to/file.txt&quot;);</span><br><span class="line">String content = &quot;hello, world&quot;;</span><br><span class="line">FileUtil.writeUtf8String(content, file);</span><br></pre></td></tr></table></figure>
+
+<p>在这些示例中，我们使用了Hutool提供的工具类进行字符串操作、日期处理和文件操作。由于这些工具类提供了许多常用的方法，因此我们可以通过使用这些工具类减少编写样板代码的工作量。</p>
+<h2 id="commons-lang3依赖"><a href="#commons-lang3依赖" class="headerlink" title="commons-lang3依赖"></a>commons-lang3依赖</h2><p>commons-lang3是一个Java语言的通用工具库，提供了许多常用的工具类和方法，例如字符串操作、数组处理、日期处理等等。要使用commons-lang3，需要将其依赖添加到项目中。以下是使用commons-lang3的Maven依赖：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">3.12</span><span class="number">.0</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>commons-lang3的一些使用示例代码如下：</p>
+<ul>
+<li>使用StringUtils工具类进行字符串操作：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.StringUtils;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;  hello, world  &quot;</span>;</span><br><span class="line">System.out.println(StringUtils.trim(str)); <span class="comment">// 输出&quot;hello, world&quot;</span></span><br><span class="line">System.out.println(StringUtils.upperCase(str)); <span class="comment">// 输出&quot;  HELLO, WORLD  &quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用ArrayUtils工具类进行数组处理：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.ArrayUtils;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">int</span>[] newArray = ArrayUtils.add(array, <span class="number">4</span>);</span><br><span class="line">System.out.println(Arrays.toString(newArray)); <span class="comment">// 输出&quot;[1, 2, 3, 4]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用DateUtils工具类进行日期处理：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.time.DateUtils;</span><br><span class="line"></span><br><span class="line"><span class="type">Date</span> <span class="variable">now</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="type">Date</span> <span class="variable">tomorrow</span> <span class="operator">=</span> DateUtils.addDays(now, <span class="number">1</span>);</span><br><span class="line">System.out.println(now); <span class="comment">// 输出当前时间</span></span><br><span class="line">System.out.println(tomorrow); <span class="comment">// 输出明天的这个时间</span></span><br></pre></td></tr></table></figure>
+
+<p>在这些示例中，我们使用了StringUtils、ArrayUtils和DateUtils等commons-lang3提供的工具类进行字符串操作、数组处理和日期处理。由于这些工具类提供了许多常用的方法，因此我们可以通过使用这些工具类减少编写样板代码的工作量。</p>
+<h2 id="Lombok依赖"><a href="#Lombok依赖" class="headerlink" title="Lombok依赖"></a>Lombok依赖</h2><p>lombok最优秀的就是注解了，一个注解就干掉了很多代码<br>常用的注解:①@Data:直接可以省略了Get、Set方法;②@Slf4j:不需要单独引入日志依赖和配置日志，直接log.info()打印日志</p>
+<p>Lombok是一个Java库，它通过注解方式简化了Java代码的编写。Lombok通过自动生成getter、setter、构造函数等代码来减少样板代码，提高开发效率。要使用Lombok，需要将其依赖添加到项目中。以下是使用Lombok的Maven依赖：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    lombok 依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">	&lt;optional&gt;<span class="literal">true</span>&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Lombok的一些注解用法如下：</p>
+<ul>
+<li>@Getter &#x2F; @Setter：自动生成Getter &#x2F; Setter方法。</li>
+<li>@ToString：自动生成toString()方法。</li>
+<li>@EqualsAndHashCode：自动生成equals()和hashCode()方法。</li>
+<li>@AllArgsConstructor &#x2F; @NoArgsConstructor：自动生成带参 &#x2F; 无参构造方法。</li>
+<li>@Data：代替@Getter &#x2F; @Setter, @ToString, @EqualsAndHashCode和有参构造方法，其实就是个组合注解。</li>
+</ul>
+<p>使用Lombok的示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">user.setId(<span class="number">1L</span>);</span><br><span class="line">user.setUsername(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">user.setPassword(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(user.toString());</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用了@Data、@AllArgsConstructor和@NoArgsConstructor注解来简化User类的定义。由于@Data已经包含了@Getter、@Setter、@ToString和@EqualsAndHashCode，因此我们只需要使用@Data注解即可。此外，由于我们使用了@AllArgsConstructor注解，因此可以在创建User对象时使用带参构造方法。最后，我们使用了自动生成的toString()方法来输出User对象的信息。</p>
+<h2 id="Fastjson依赖"><a href="#Fastjson依赖" class="headerlink" title="Fastjson依赖"></a>Fastjson依赖</h2><p>Fastjson是一个用于Java语言的高性能JSON处理库，支持各种数据格式的转换，同时也提供了多种解析、序列化的方式。要使用Fastjson，需要将其依赖添加到项目中。以下是使用Fastjson的Maven依赖：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;fastjson&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">1.2</span><span class="number">.76</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用Fastjson将Java对象序列化为JSON字符串的示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"></span><br><span class="line"><span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">user.setId(<span class="number">1</span>);</span><br><span class="line">user.setUsername(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">user.setPassword(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">json</span> <span class="operator">=</span> JSON.toJSONString(user);</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用了JSON类的toJSONString()方法将User对象序列化为JSON字符串。</p>
+<p>使用Fastjson将JSON字符串反序列化为Java对象的示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">json</span> <span class="operator">=</span> <span class="string">&quot;&#123;\&quot;id\&quot;:1,\&quot;username\&quot;:\&quot;admin\&quot;,\&quot;password\&quot;:\&quot;123456\&quot;&#125;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> JSON.parseObject(json, User.class);</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用了JSON类的parseObject()方法将JSON字符串反序列化为User对象。需要注意的是，第二个参数指定了反序列化的目标对象类型。</p>
+<h2 id="java图形验证码"><a href="#java图形验证码" class="headerlink" title="java图形验证码"></a>java图形验证码</h2><p>easy-captcha 是一个基于Java的验证码库，可以快速生成各种类型的验证码。要使用easy-captcha，需要将其依赖添加到项目中。以下是使用easy-captcha的Maven依赖：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.github.yingzhuo&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;easy-captcha&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.7</span><span class="number">.2</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用easy-captcha生成验证码的示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.wf.captcha.utils.CaptchaUtil;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成中文验证码</span></span><br><span class="line">CaptchaUtil.out(<span class="number">130</span>, <span class="number">48</span>, <span class="number">4</span>, response);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成算术验证码</span></span><br><span class="line">CaptchaUtil.outArithmetic(<span class="number">130</span>, <span class="number">48</span>, <span class="number">4</span>, response);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成gif动画验证码</span></span><br><span class="line">CaptchaUtil.outGif(<span class="number">130</span>, <span class="number">48</span>, <span class="number">4</span>, response);</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用了CaptchaUtil类的out()、outArithmetic()和outGif()方法分别生成中文验证码、算术验证码和gif动画验证码。</p>
+<p>使用easy-captcha验证验证码的示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> com.wf.captcha.utils.CaptchaUtil;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">code</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;code&quot;</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> CaptchaUtil.ver(code, request);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (result) &#123;</span><br><span class="line">    <span class="comment">// 验证通过</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 验证失败</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用CaptchaUtil类的ver()方法验证用户输入的验证码是否正确。如果验证通过，将返回true；否则，将返回false。</p>
+<h2 id="JWT依赖"><a href="#JWT依赖" class="headerlink" title="JWT依赖"></a>JWT依赖</h2><p>JJWT（Java JWT）是一个开源的Java库，用于生成、解析和验证JSON Web Tokens（JWT）。在用户注册或登录后，我们想记录用户的登录状态，或者为用户创建身份认证的凭证。我们不再使用Session认证机制，而使用Json Web Token认证机制。要使用JJWT，需要将其依赖添加到项目中。以下是使用JJWT实现JWT的Maven依赖：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--jwt（JSON Web Token 依赖）--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">0.9</span><span class="number">.1</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用JJWT生成JWT的示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io.jsonwebtoken.Jwts;</span><br><span class="line"><span class="keyword">import</span> io.jsonwebtoken.SignatureAlgorithm;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">secretKey</span> <span class="operator">=</span> <span class="string">&quot;mySecretKey&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">jwt</span> <span class="operator">=</span> Jwts.builder()</span><br><span class="line">        .setSubject(<span class="string">&quot;user123&quot;</span>)</span><br><span class="line">        .setExpiration(<span class="keyword">new</span> <span class="title class_">Date</span>(System.currentTimeMillis() + <span class="number">3600000</span>))</span><br><span class="line">        .signWith(SignatureAlgorithm.HS256, secretKey.getBytes())</span><br><span class="line">        .compact();</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用Jwts.builder()方法创建一个JWT生成器，然后设置了一些声明（例如，Subject和Expiration），并使用signWith()方法设置JWT的签名算法和密钥。</p>
+<p>使用JJWT验证JWT的示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io.jsonwebtoken.Claims;</span><br><span class="line"><span class="keyword">import</span> io.jsonwebtoken.Jwts;</span><br><span class="line"><span class="keyword">import</span> io.jsonwebtoken.SignatureAlgorithm;</span><br><span class="line"><span class="keyword">import</span> io.jsonwebtoken.security.Keys;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">jwt</span> <span class="operator">=</span> ... <span class="comment">// [从请求中获取JWT]</span></span><br><span class="line"><span class="type">String</span> <span class="variable">secretKey</span> <span class="operator">=</span> <span class="string">&quot;mySecretKey&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="type">Claims</span> <span class="variable">claims</span> <span class="operator">=</span> Jwts.parser()</span><br><span class="line">            .setSigningKey(secretKey.getBytes())</span><br><span class="line">            .parseClaimsJws(jwt)</span><br><span class="line">            .getBody();</span><br><span class="line">    <span class="comment">// 验证通过，可以使用claims中的声明</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    <span class="comment">// 验证失败，无法信任该JWT</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们使用Jwts.parser()方法创建一个JWT解析器，然后使用setSigningKey()方法设置JWT的密钥，并使用parseClaimsJws()方法解析JWT。如果验证成功，将返回一个Claims对象，其中包含了JWT中的声明。如果验证失败，将抛出JwtException异常。</p>
+<h2 id="定时任务Quartz"><a href="#定时任务Quartz" class="headerlink" title="定时任务Quartz"></a>定时任务Quartz</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- SpringBoot 整合 Quartz 定时任务 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-quartz&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;<span class="number">2.3</span><span class="number">.5</span>.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><font color="#00c4b6" size="5">辅助类工具依赖</font></p>
+<h2 id="swagger-ui"><a href="#swagger-ui" class="headerlink" title="swagger-ui"></a>swagger-ui</h2><p>Swagger是一个规范且完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务。是一个实现了OpenAPI(OpenAPI Specification)规范的工具集。OpenAPI是Linux基金会的一个项目，试图通过定义一种用来描述API格式或API定义的语言，来规范RESTful服务开发过程。<br>Swagger大大方便了前后端开发人员，用过的人都说好。启动项目后访问：localhost:8080&#x2F;swagger-ui.html，就能看到生成的文档了，很是简单。<br>使用SwaggerAPI的步骤<br>1.添加Swagger依赖<br>2.添加配置:新建一个config包，写配置类,加入api注解，在controller类上面,每个方法上加入@ApiOperation注解，生成对应api<br>3.在线测试接口:重启项目打开网页进入访问地址(<a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8080/swagger-ui.html">http://localhost:8080/swagger-ui.html</a>)<br>常用注解<br>@Api：修饰整个类，描述Controller的作用<br>@ApiOperation：描述一个类的一个方法，或者说一个接口<br>@ApiParam：单个参数描述<br>@ApiModel：用对象来接收参数<br>@ApiProperty：用对象接收参数时，描述对象的一个字段<br>@ApiResponse：HTTP响应其中1个描述<br>@ApiResponses：HTTP响应整体描述<br>@ApiIgnore：使用该注解忽略这个API<br>@ApiError ：发生错误返回的信息<br>@ApiImplicitParam：一个请求参数<br>@ApiImplicitParams：多个请求参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--添加swagger的依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.7</span><span class="number">.0</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.springfox&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.7</span><span class="number">.0</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示这个类是一个配置类,会把这个类注入到ioc容器中</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="comment">//开启swagger2的功能</span></span><br><span class="line"><span class="meta">@EnableSwagger2</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SwaggerConfig</span> &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> Docket <span class="title function_">createRestApi</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Docket</span>(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">                <span class="comment">//这里一定要标注你控制器的位置</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">&quot;com.qiu.controller&quot;</span>))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> ApiInfo <span class="title function_">apiInfo</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ApiInfoBuilder</span>()</span><br><span class="line">                .title(<span class="string">&quot;Thymeleaf测试&quot;</span>)</span><br><span class="line">                .description(<span class="string">&quot;SpringBoot整合Thymeleaf测试&quot;</span>)</span><br><span class="line">                .termsOfServiceUrl(<span class="string">&quot;https://angegit.gitee.io/myblog/&quot;</span>)</span><br><span class="line">                .contact(<span class="keyword">new</span> <span class="title class_">Contact</span>(<span class="string">&quot;niechangan&quot;</span>,<span class="string">&quot;https://angegit.gitee.io/myblog/&quot;</span>,<span class="string">&quot;1351261434@qq.com&quot;</span>))</span><br><span class="line">                .version(<span class="string">&quot;1.0&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="扫描xml文件"><a href="#扫描xml文件" class="headerlink" title="扫描xml文件"></a>扫描xml文件</h2><p>当xml文件不在resource目录下的mapper目录时，可以使用下面的代码添加到pom.xml文件中配置springboot下面扫描到mapper对应的xml文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在application.yml配置文件里添加下面的代码，配置扫描xml文件的路径</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:com/guangzai/edu/mapper/xml/*.xml</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="手机短信依赖"><a href="#手机短信依赖" class="headerlink" title="手机短信依赖"></a>手机短信依赖</h2><p>Spring Boot提供了许多发送手机短信的依赖，最常用的是阿里云短信SDK和腾讯云短信SDK。你需要根据自己使用的短信服务商选择相应的依赖。</p>
+<ol>
+<li>阿里云短信SDK依赖</li>
+</ol>
+<p>Maven:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.aliyun&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;aliyun-java-sdk-sms&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;com.aliyun&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;aliyun-java-sdk-core&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Gradle:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;com.aliyun:aliyun-java-sdk-sms:1.1.0&#x27;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>腾讯云短信SDK依赖</li>
+</ol>
+<p>Maven:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.tencentcloudapi&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;tencentcloud-sdk-java&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.0.52&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Gradle:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#x27;com.tencentcloudapi:tencentcloud-sdk-java:3.0.52&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>注意：使用腾讯云短信SDK需要在代码中配置密钥和签名，具体请参考腾讯云短信SDK的文档。</p>
+<p>使用以上依赖后，你需要在代码中配置短信服务的相关信息，例如阿里云短信SDK需要配置Access Key和Access Secret，腾讯云短信SDK需要配置SecretId和SecretKey等。具体可参考对应SDK的文档。之后，你就可以使用相应的API发送手机短信了。</p>
+<h2 id="HttpClient依赖"><a href="#HttpClient依赖" class="headerlink" title="HttpClient依赖"></a>HttpClient依赖</h2><p>HttpClient是Apache提供的一个Java开发的HTTP客户端库，用于发送HTTP请求和处理HTTP响应，可通过Maven或Gradle来引入相关依赖。以下是引入HttpClient的示例：</p>
+<p>Maven:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;httpclient&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.5.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Gradle:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">&#x27;org.apache.httpcomponents:httpclient:4.5.13&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，groupId为org.apache.httpcomponents，artifactId为httpclient，version为具体的版本号。</p>
+<p>使用以上依赖后，在Java代码中可直接使用HttpClient相关的API发送HTTP请求和处理HTTP响应。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建HttpClient对象</span></span><br><span class="line"><span class="type">CloseableHttpClient</span> <span class="variable">httpClient</span> <span class="operator">=</span> HttpClientBuilder.create().build();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建HttpGet请求</span></span><br><span class="line"><span class="type">HttpGet</span> <span class="variable">httpGet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpGet</span>(<span class="string">&quot;http://www.baidu.com&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送请求，获取响应</span></span><br><span class="line"><span class="type">CloseableHttpResponse</span> <span class="variable">response</span> <span class="operator">=</span> httpClient.execute(httpGet);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理响应</span></span><br><span class="line"><span class="type">HttpEntity</span> <span class="variable">entity</span> <span class="operator">=</span> response.getEntity();</span><br><span class="line"><span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> EntityUtils.toString(entity);</span><br><span class="line">System.out.println(result);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭响应和HttpClient</span></span><br><span class="line">response.close();</span><br><span class="line">httpClient.close();</span><br></pre></td></tr></table></figure>
+
+<p>上面的示例通过HttpClient发送了一个HTTP GET请求，并打印了响应结果。其中，HttpGet是请求对象，CloseableHttpResponse是响应对象，HttpEntity是响应主体的封装对象。</p>
+<h2 id="Gson依赖"><a href="#Gson依赖" class="headerlink" title="Gson依赖"></a>Gson依赖</h2><p>Gson是Google开发的一个Java库，用于将Java对象与JSON数据进行序列化和反序列化，可通过Maven或 Gradle来引入相关依赖。以下是引入Gson的示例：</p>
+<p>Maven:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--gson--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;gson&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.8</span><span class="number">.2</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Gradle:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.google.code.gson:gson:2.8.2&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，groupId为com.google.code. gson，artifactId为gson，version为具体的版本号。</p>
+<p>使用以上依赖后，在Java代码中可直接使用Gson相关的API进行JSON的序列化和反序列化操作。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将Java对象转换为JSON格式字符串</span></span><br><span class="line"><span class="type">Gson</span> <span class="variable">gson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Gson</span>();</span><br><span class="line"><span class="type">String</span> <span class="variable">json</span> <span class="operator">=</span> gson.toJson(object);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将JSON格式字符串转换为Java对象</span></span><br><span class="line"><span class="type">Gson</span> <span class="variable">gson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Gson</span>();</span><br><span class="line"><span class="type">Object</span> <span class="variable">object</span> <span class="operator">=</span> gson.fromJson(json, Object.class);</span><br></pre></td></tr></table></figure>
+
+<h2 id="nacos依赖"><a href="#nacos依赖" class="headerlink" title="nacos依赖"></a>nacos依赖</h2><p>Nacos（Naming and Configuration Service）是一个开源的动态服务注册、配置和服务发现平台，用于简化微服务架构中的服务管理和运维工作。</p>
+<p>在Java项目中使用Nacos需要引入以下依赖：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-config&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.2</span><span class="number">.0</span>.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.2</span><span class="number">.0</span>.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中，spring-cloud-starter-alibaba-nacos-config用于Nacos配置中心的集成，spring-cloud-starter-alibaba-nacos-discovery用于Nacos服务注册和发现的集成。</p>
+<p>这些依赖都是基于SpringCloud的，因此需要先引入SpringCloud的依赖，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;Hoxton.SR10&lt;/version&gt;</span><br><span class="line">    &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">    &lt;scope&gt;<span class="keyword">import</span>&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，Nacos目前支持的SpringCloud版本是Hoxton及之后的版本，因此需要确保引入的SpringCloud版本符合要求。</p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/nanshuo/about/ikun.jpg"></a><div class="post-copyright__author_name">烁烁南光</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude st-hand-heart-fill"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏。</span><ul class="reward-group"><li class="reward-item"><a href="/img/nanshuo/weixinzhifu.png"><img class="post-qr-code-img nolazyload" src="/img/nanshuo/weixinzhifu.png" alt="微信支付" style="border-color: var(--efu-purple)"></a><div class="post-qr-code-desc">微信支付</div></li><li class="reward-item"><a href="/img/nanshuo/zhifubaozhifu.png"><img class="post-qr-code-img nolazyload" src="/img/nanshuo/zhifubaozhifu.png" alt="支付宝支付" style="border-color: var(--efu-black)"></a><div class="post-qr-code-desc">支付宝支付</div></li></ul><a class="reward-main-btn" href="/about"><div class="reward-text">赞赏名单</div><div class="reward-dec">因为有你们的支持，我才体会到写文章的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script><div class="reward-link mode"><a class="reward-link-button" href="/atom.xml"><i class="solitude st-plant-fill"></i>订阅</a></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">烁烁南光</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SpringBoot/"><span class="tags-punctuation"></span>SpringBoot<span class="tagsPageCount">1</span></a></div></div><div class="social-share"><a class="social-share-ico icon-qq" target="_blank" rel="noopener external nofollow noreferrer" href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F932aaee2&amp;title=SpringBoot%E7%9A%84pom.xml%E4%BE%9D%E8%B5%96&amp;desc=undefined&amp;summary=undefined&amp;site=SpringBoot%E7%9A%84pom.xml%E4%BE%9D%E8%B5%96&amp;pics=https%3A%2F%2Fypycdn.nanshuo.icu%2Fposts%2Fspringboot%2Fspringboott.webp" title="QQ"></a><a class="social-share-ico icon-weibo" target="_blank" rel="noopener external nofollow noreferrer" href="http://service.weibo.com/share/share.php?url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F932aaee2&amp;title=SpringBoot%E7%9A%84pom.xml%E4%BE%9D%E8%B5%96&amp;pic=https%3A%2F%2Fypycdn.nanshuo.icu%2Fposts%2Fspringboot%2Fspringboott.webp" title="Weibo"></a><a class="social-share-ico icon-twitter" target="_blank" rel="noopener external nofollow noreferrer" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F932aaee2&amp;text=SpringBoot%E7%9A%84pom.xml%E4%BE%9D%E8%B5%96" title="Twitter"></a><a class="social-share-ico icon-facebook" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F932aaee2" title="Facebook"></a><a class="social-share-ico icon-telegram" target="_blank" rel="noopener external nofollow noreferrer" href="https://t.me/share/url?url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F932aaee2&amp;text=SpringBoot%E7%9A%84pom.xml%E4%BE%9D%E8%B5%96" title="Telegram"></a><a class="social-share-ico icon-whatsapp" target="_blank" rel="noopener external nofollow noreferrer" href="https://api.whatsapp.com/send?text=SpringBoot%E7%9A%84pom.xml%E4%BE%9D%E8%B5%96 https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F932aaee2" title="WhatsApp"></a><a class="social-share-ico icon-linkedin" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F932aaee2&amp;title=SpringBoot%E7%9A%84pom.xml%E4%BE%9D%E8%B5%96&amp;summary=undefined&amp;source=SpringBoot%E7%9A%84pom.xml%E4%BE%9D%E8%B5%96" title="LinkedIn"></a></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/deb5175a"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux学习</div></div></a></div><div class="next-post pull-right"><a href="/posts/9da0650b"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java Tool</div></div></a></div></nav><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="solitude st-chat-fill"></i><span> 评论</span><span class="count"> (<span class="waline-comment-count"><i class="solitude st-loading-line"></i></span>)</span></div><div class="comment-switch"><span class="first">Waline</span><span id="switch-btn"></span><span class="second">Twikkoo</span></div></div><div class="comment-wrap"><div id="waline-wrap"></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="/img/nanshuo/avatar.png"><div class="avatar-sticker"><img class="avatar-sticker-img" src="/img/nanshuo/avatar.gif" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">你好，来自各地的小友<br/>有朋自远方来，不亦乐乎!</div><div class="author-info__description2">站长：南烁<br/>生日：2003年08月14日<br/>邮箱：nanshuo.icu@qq.com</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">南烁</div><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nanshuo0814" title="Github"><i class="solitude  st-github-line"></i></a><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=nanshuo.icu@qq.com" title="Email"><i class="solitude  st-mail-line"></i></a></div></div></div></div><div class="card-widget card-platform"><div id="flip-wrapper"><div id="flip-content"><div class="face"></div><div class="back face"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pom-xml"><span class="toc-text">pom.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql%E9%A9%B1%E5%8A%A8"><span class="toc-text">mysql驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mybatis"><span class="toc-text">mybatis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mybatis-plus"><span class="toc-text">mybatis-plus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Druid%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-text">Druid数据库连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%B6%E4%BE%9D%E8%B5%96"><span class="toc-text">父依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring-boot-starter"><span class="toc-text">spring-boot-starter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E4%BE%9D%E8%B5%96"><span class="toc-text">Web依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thymeleaf%E4%BE%9D%E8%B5%96"><span class="toc-text">Thymeleaf依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95JUnit%E4%BE%9D%E8%B5%96"><span class="toc-text">单元测试JUnit依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#springboot%E7%83%AD%E9%83%A8%E7%BD%B2"><span class="toc-text">springboot热部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aop%E4%BE%9D%E8%B5%96"><span class="toc-text">aop依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%AE%E7%AE%B1%E4%BE%9D%E8%B5%96"><span class="toc-text">邮箱依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#springboot%E9%9B%86%E6%88%90redis"><span class="toc-text">springboot集成redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redisson%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-text">redisson分布式锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#application-properties"><span class="toc-text">application.properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#application-yml"><span class="toc-text">application.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#security%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6"><span class="toc-text">security安全框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#springboot%E7%BC%93%E5%AD%98"><span class="toc-text">springboot缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#common-pool2"><span class="toc-text">common-pool2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket"><span class="toc-text">websocket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring-data-jpa"><span class="toc-text">spring-data-jpa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hutool%E4%BE%9D%E8%B5%96"><span class="toc-text">hutool依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#commons-lang3%E4%BE%9D%E8%B5%96"><span class="toc-text">commons-lang3依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombok%E4%BE%9D%E8%B5%96"><span class="toc-text">Lombok依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fastjson%E4%BE%9D%E8%B5%96"><span class="toc-text">Fastjson依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="toc-text">java图形验证码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT%E4%BE%9D%E8%B5%96"><span class="toc-text">JWT依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1Quartz"><span class="toc-text">定时任务Quartz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#swagger-ui"><span class="toc-text">swagger-ui</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8Fxml%E6%96%87%E4%BB%B6"><span class="toc-text">扫描xml文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E7%9F%AD%E4%BF%A1%E4%BE%9D%E8%B5%96"><span class="toc-text">手机短信依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpClient%E4%BE%9D%E8%B5%96"><span class="toc-text">HttpClient依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gson%E4%BE%9D%E8%B5%96"><span class="toc-text">Gson依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nacos%E4%BE%9D%E8%B5%96"><span class="toc-text">nacos依赖</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3d10ab08" title="前后端项目部署笔记(基于CentOS7)"><img alt="前后端项目部署笔记(基于CentOS7)" src="https://ypycdn.nanshuo.icu/posts/qhdbs/qianhouduanbushu.jpg"></a><div class="content"><a class="title" href="/posts/3d10ab08" title="前后端项目部署笔记(基于CentOS7)">前后端项目部署笔记(基于CentOS7)</a><a class="article-recent_post_categories" href="/posts/3d10ab08">CentOS</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/df0d5506" title="使用ChatGPT官网教程"><img alt="使用ChatGPT官网教程" src="https://ypycdn.nanshuo.icu/posts/chatgpt/gpt.jpg"></a><div class="content"><a class="title" href="/posts/df0d5506" title="使用ChatGPT官网教程">使用ChatGPT官网教程</a><a class="article-recent_post_categories" href="/posts/df0d5506">ChatGPT</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/755ce520" title="Vue2基础学习"><img alt="Vue2基础学习" src="https://ypycdn.nanshuo.icu/posts/vue/vue.webp"></a><div class="content"><a class="title" href="/posts/755ce520" title="Vue2基础学习">Vue2基础学习</a><a class="article-recent_post_categories" href="/posts/755ce520">Vue</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3fcf3ac3" title="IDEA好用插件"><img alt="IDEA好用插件" src="https://ypycdn.nanshuo.icu/posts/idea_chajian/jjava.gif"></a><div class="content"><a class="title" href="/posts/3fcf3ac3" title="IDEA好用插件">IDEA好用插件</a><a class="article-recent_post_categories" href="/posts/3fcf3ac3">Java</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/65632ce1" title="Docker基础学习"><img alt="Docker基础学习" src="https://ypycdn.nanshuo.icu/posts/docker_learn/Docker.jpeg"></a><div class="content"><a class="title" href="/posts/65632ce1" title="Docker基础学习">Docker基础学习</a><a class="article-recent_post_categories" href="/posts/65632ce1">docker</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span>烁烁南光</span></div><div class="footer-bar-description">来自 南烁 的文章</div><a class="footer-bar-link" href="/about/">了解更多</a></div><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nanshuo0814" title="Github"><i class="solitude  st-github-line"></i></a><div class="nolazyload footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img src= "/img/loading.gif" data-lazy-src="/img/nanshuo/about/ikun.jpg" alt="返回顶部"></div><a class="deal_link" href="mailto:nanshuo.icu@qq.com" rel="external nofollow noreferrer" title="Mail"><i class="solitude  st-mail-line"></i></a></div><div id="st-footer"><div class="footer-group"><h3 class="footer-title">导航</h3><div class="footer-links"><a class="footer-item" href="/archives/" title="归档">归档</a><a class="footer-item" href="/categories/" title="分类">分类</a><a class="footer-item" href="/tags/" title="标签">标签</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/cookies/" title="Cookies">Cookies</a><a class="footer-item" href="/privacy/" title="用户协议">用户协议</a><a class="footer-item" href="/copyright/" title="版权协议">版权协议</a></div></div><div class="footer-group"><h3 class="footer-title">站长</h3><div class="footer-links"><a class="footer-item" href="/tlink/" title="工具箱">工具箱</a><a class="footer-item" href="/music/" title="音乐馆">音乐馆</a><a class="footer-item" href="/about/" title="关于页">关于页</a></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">南烁</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/valor-x/hexo-theme-solitude" alt="主题">主题</a><a class="footer-bar-link" href="/atom.xml" alt="订阅">订阅</a><a class="footer-bar-link cc" href="/copyright" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div><div class="needEndHide" id="cookies-window"><div class="cookies-window-title">协议提醒助手</div><div class="cookies-window-content"><span class="cookies-tip">查看本站为你的个人隐私做出的努力</span><a class="cookies-link" href="/privacy" title="本站如何保护你的隐私"><i class="solitude st-right-btn-fill"></i></a></div></div><div class="comment-barrage needEndHide"></div></footer></div><!-- right_menu--><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="solitude st-arrow-left-line"></i></div><div class="rightMenu-item" id="menu-forward"><i class="solitude st-arrow-right-line"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="solitude st-restart-line"></i></div><div class="rightMenu-item" id="menu-top"><i class="solitude st-arrow-up-line"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="solitude st-copy-fill"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="solitude st-clipboard-fill"></i><span>粘贴文本</span></div><div class="rightMenu-item" id="menu-commenttext"><i class="solitude st-chat-new-fill"></i><span>引用到评论</span></div><div class="rightMenu-item" id="menu-newwindow"><i class="solitude st-window-fill"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="solitude st-link-line"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="solitude st-copy-fill"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="solitude st-download-cloud-fill"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-search"><i class="solitude st-search-line"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="solitude st-play-fill"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="solitude st-skip-back-fill"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="solitude st-skip-forward-fill"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="solitude st-copy-fill"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-randomPost" onclick="toRandomPost()||rm.hideRightMenu()"><i class="solitude st-signal-tower-fill"></i><span>随机短文</span></div><div class="rightMenu-item" onclick="pjax.loadUrl('/categories/')||rm.hideRightMenu()"><i class="solitude st-checkbox-multiple-blank-fill"></i><span>全部分类</span></div><div class="rightMenu-item" onclick="pjax.loadUrl('/tags/')||rm.hideRightMenu()"><i class="solitude st-price-tag-fill"></i><span>全部标签</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-commentBarrage" onclick="sco.switchCommentBarrage()"><i class="solitude st-chat-fill"></i><span class="menu-commentBarrage-text">关闭热评</span></div><div class="rightMenu-item" id="menu-darkmode" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span class="menu-darkmode-text">深色模式</span></div><div class="rightMenu-item" id="menu-translate"><i class="solitude st-panben-line"></i><span>轉為繁體</span></div></div></div><div id="rightmenu-mask"></div><!-- inject body--><div><script src="/js/utils.js?v=1.11.0"></script><script src="/js/main.js?v=1.11.0"></script><script src="/js/third_party/waterfall.min.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.11.0"></script><script>dark()
+</script><script src="/js/tw_cn.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.min.js"></script><script>var meting_api = 'https://meting.qjqq.cn/?server=:server&type=:type&id=:id&auth=:auth&r=:r';</script><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/meting/2.0.1/Meting.min.js"></script><script src="/js/covercolor/local.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.68.1/instantsearch.production.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.23.3/algoliasearch-lite.umd.min.js"></script><script src="/js/right_menu.js?v=1.11.0"></script><div class="js-pjax"><script>(() => {
+    let walineInitFunction = window.walineFn || null
+
+    function initWaline(initFn) {
+        const walineOptions = {
+            el: '#waline-wrap',
+            serverURL: 'https://waline.nanshuo.icu',
+            pageview: true,
+            dark: 'html[data-theme="dark"]',
+            path: window.location.pathname,
+            comment: true,
+            ...null
+        }
+        const walineInstance = initFn(walineOptions)
+        utils.addGlobalFn('pjax', () => walineInstance.destroy(), 'destroyWaline')
+        GLOBAL_CONFIG.lightbox && utils.lightbox(document.querySelectorAll('#comment .wl-content img:not(.wl-emoji)'))
+        sco.owoBig({
+            body: '.wl-emoji-popup',
+            item: '.wl-tab-wrapper button'
+        })
+    }
+
+    async function loadWaline() {
+        if (walineInitFunction) initWaline(walineInitFunction)
+        else {
+            await utils.getCSS('https://cdnjs.cloudflare.com/ajax/libs/waline/3.1.3/waline.min.css')
+            const {init} = await import('https://cdnjs.cloudflare.com/ajax/libs/waline/3.1.3/waline.min.js')
+            walineInitFunction = init || Waline.init
+            initWaline(walineInitFunction)
+            window.walineFn = walineInitFunction
+        }
+        true && barrageWaline()
+    }
+
+    if (true || true) {
+        if (true) utils.loadComment(document.getElementById('waline-wrap'), loadWaline)
+        else loadWaline()
+    } else window.loadTwoComment = loadWaline
+})()
+</script><script>async function barrageWaline() {
+    const url = new URL('https://waline.nanshuo.icu/api/comment')
+    const params = {path: window.location.pathname, sortBy: 'insertedAt_asc'}
+    Object.entries(params).forEach(([key, value]) => url.searchParams.append(key, value))
+    await fetch(url).then(async res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        const data = await res.json();
+        const regex = /<img [^>]*class="wl-emoji"[^>]*>/;
+        const init = () => {
+            initializeCommentBarrage(data.data.data
+                .map(item => ({
+                    nick: item.nick,
+                    mailId: item.avatar,
+                    content: item.comment.replace(regex, ''),
+                    id: item.objectId
+                })))
+        }
+        if (typeof initializeCommentBarrage === "undefined") await utils.getScript('/js/third_party/barrage.min.js?v=1.11.0').then(init)
+        else init()
+    }).catch(error => console.error("An error occurred while fetching comments: ", error))
+}</script><script defer pjax src="https://cdnjs.cloudflare.com/ajax/libs/busuanzi/2.3.0/bsz.pure.mini.min.js"></script></div></div><!-- newest comment--><script>window.addEventListener('load', () => {
+    const changeContent = (content) => {
+        if (content === '') return content;
+
+        const replacements = [
+            {regex: /<img.*?src="(.*?)"?[^\>]+>/ig, replacement: '[图片]'},
+            {
+                regex: /<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi,
+                replacement: '[链接]'
+            },
+            {regex: /<pre><code>.*?<\/pre>/gi, replacement: '[代码]'},
+            {regex: /<[^>]+>/g, replacement: ""}
+        ];
+
+        content = replacements.reduce((str, {regex, replacement}) => str.replace(regex, replacement), content);
+
+        return content.length > 150 ? content.substring(0, 150) + '...' : content;
+    }
+
+    const $asideList = document.querySelector('#card-newest-comments .aside-list')
+    const newestCommentInit = () => {
+        const data = utils.saveToLocal.get('waline-newest-comment')
+        if (data) {
+            generateHtml(data)
+        } else {
+            getComment()
+        }
+    }
+
+    const getComment = async () => {
+        await fetch('https://waline.nanshuo.icu/api/comment?type=recent&count=6', {method: 'GET'}).then(async res => {
+            const result = await res.json()
+            const walineArray = result.data.map(e => {
+                return {
+                    'content': changeContent(e.comment),
+                    'avatar': e.avatar,
+                    'nick': e.nick,
+                    'url': e.url + '#' + e.objectId,
+                    'date': new Date(e.time || e.insertedAt)
+                }
+            })
+            utils.saveToLocal.set('waline-newest-comment', walineArray, 0.5)
+            generateHtml(walineArray)
+        }).catch(error => {
+            console.error(error)
+            $asideList.textContent = "无法获取评论，请确认相关配置是否正确。"
+        })
+    }
+
+    const generateHtml = array => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML = array.length ? array.map(item => `
+            <div class='aside-list-item'>
+              <div onclick='pjax.loadUrl("${item.url}")' class='thumbnail'>
+                <img src= "/img/loading.gif" data-lazy-src='${item.avatar}' alt='${item.nick}'>
+                <div class='name'><span>${item.nick}</span></div>
+              </div>
+              <div class='content'>
+                <div class='comment' onclick='pjax.loadUrl("${item.url}")'>${item.content}</div>
+                <time class="datetime" datetime="${item.date}"></time>
+              </div>
+            </div>
+          `).join('') : "没有评论"
+        window.lazyLoadInstance?.update()
+        window.pjax?.refresh()
+        sco?.changeTimeFormat(document.querySelectorAll('.aside-list-item time'))
+    }
+
+    newestCommentInit()
+})</script><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ['title','#body-wrap','#site-config','meta[name="description"]','.js-pjax','meta[property^="og:"]','#config-diff'],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    is_rm && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- google adsense--><!-- search--><div id="algolia-search"><div class="search-dialog"><div class="algolia-navbar"><div class="search-dialog__title" id="algolia-search-title">搜索</div><div class="algolia-tips"><i class="solitude st-algolia-fill"></i><span class="algolia-tips-text">Algolia</span></div><span class="search-close-button"><i class="solitude st-close-fill"></i></span></div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><div id="search-results"><div id="algolia-hits"></div></div><div id="algolia-tips"><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div><div id="search-mask"></div></div><script src="/js/search/algolia.js?v=1.11.0"></script><!-- Tianli-Talk--><!-- music--><div class="needEndHide" id="nav-music" onclick="sco.musicToggle()"><div id="nav-music-hoverTips">音乐已暂停</div><meting-js id="8853506106" server="netease" type="playlist" mutex="true" preload="none" data-lrctype="0" order="random" theme="var(--efu-main)"></meting-js></div></body></html><script>const posts=["posts/3d10ab08","posts/df0d5506","posts/755ce520","posts/3fcf3ac3","posts/65632ce1","posts/53af7255","posts/deb5175a","posts/932aaee2","posts/9da0650b"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>

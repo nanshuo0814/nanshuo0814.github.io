@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>IDEA好用插件 | 烁烁南光</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/nanshuo/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.11.0"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"><!-- swiper--><!-- fancybox ui--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.min.css"><!-- katex--><!-- Open Graph--><meta name="description" content="IEDA常用且好用的插件 友情提示：合理的使用插件能节省时间和提高工作效率,但下载过多的插件会影响IDEA的性能,所以要选择性的下载使用对自己有用的插件,这样能事半功倍哦 插件分类：IDEA外观、代码优化、快速开发、第三方工具 下载方式：直接在IDEA设置里找到插件选项，在里面填写插件名称下载即可，"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="烁烁南光"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/nanshuo/favicon.png"><link rel="apple-touch-icon" href="/img/nanshuo/favicon.png" sizes="180x180"><script>console.log(
+    "%c Program: Hexo %c Theme: Solitude %c Version: v1.11.0",
+    "border-radius:5px 0 0 5px;padding: 5px 10px;color:white;background:#ff3842;",
+    "padding: 5px 10px;color:white;background:#3e9f50;",
+    "padding: 5px 10px;color:white;background:#0084ff;border-radius:0 5px 5px 0",
+)
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+    
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+    
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+    
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+    
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+        
+                if (name && keyObj[name]) return
+        
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+        }
+    })()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: {"appId":"J4WYQZZC26","apiKey":"7de0fc8f9b9914acc47bb7b08c9e12be","indexName":"ssng","hits":{"per_page":6}},
+    localsearch: undefined,
+    runtime: '2023-08-14 00:00:00',
+    lazyload: {
+        enable: true,
+        error: '/img/error_load.webp'
+    },
+    copyright: {"limit":50,"author":"作者: 南烁","link":"链接: ","source":"来源: 烁烁南光","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+        syntax: 'highlight.js'
+    },
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。"},"barrage":{"title":"热评"}},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: ["🤖️ 数码科技爱好者","🔍 热爱探索新事物","🏠 智能家居小能手","🔑 设计开发一把手","😀 乐观向上阳春人","👣 脚踏实地行动派","👀 眼里有光大学生","🌙 逆光而行潜行者"],
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {"avatar":"https://cravatar.cn","commentBarrage":true},
+    lightbox: 'fancybox',
+    post_ai: false,
+    right_menu: {"mode":{"dark":"深色模式","light":"浅色模式"},"img_error":"此图片无法复制与下载","music":{"start":"播放音乐","stop":"暂停音乐"},"barrage":{"open":"显示热评","close":"关闭热评"},"translate":{"translateDelay":0,"defaultEncoding":2}},
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: true,
+    ai_text: false
+}</script><meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="烁烁南光" type="application/atom+xml">
+</head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/img/nanshuo/about/ikun.jpg" alt="loading image"></div></div><script>const preloader = {
+    endLoading: () => {
+        document.getElementById('loading-box').classList.toggle('loaded');
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+    },
+    removePaceDone: () => {
+        document.getElementById('body').classList = 'pace-done';
+    }
+}
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});</script><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><div class="author-content-item-title">最新评论<a class="recent-comment-more" href="/recentcomments/" title="最近评论"><i class="solitude st-right-btn-fill"></i></a></div></div><div class="aside-list"></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">标签</div><div class="author-content-item-title">寻找感兴趣的领域</div></div><div class="card-tag-cloud"><a href="/tags/ChatGPT/">ChatGPT<sup>1</sup></a><a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA<sup>1</sup></a><a href="/tags/Java/">Java<sup>3</sup></a><a href="/tags/git/">git<sup>1</sup></a><a href="/tags/docker/">docker<sup>1</sup></a><a href="/tags/Linux/">Linux<sup>1</sup></a><a href="/tags/CentOS/">CentOS<sup>1</sup></a><a href="/tags/nginx/">nginx<sup>1</sup></a><a href="/tags/SpringBoot/">SpringBoot<sup>1</sup></a><a href="/tags/Vue/">Vue<sup>1</sup></a></div></div><div class="console-card history" onclick="sco.hideConsole()"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">2024/03</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">2023/02</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">2023/01</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">2022/12</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">2022/11</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span class="card-archive-list-count-unit">篇</span></div></a></li></ul></div></div></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div><div class="console-btn-item" id="consoleMusic" onclick="sco.musicToggle()"><span class="music-switch" title="音乐开关"><i class="solitude st-disc-fill"></i></span></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><span class="commentBarrage"><i class="solitude st-chat-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://nanshuo.icu" title="halo-blog"><img class="nolazyload back-menu-item-icon" src="/img/nanshuo/favicon.png" alt="halo-blog"><span class="back-menu-item-text">halo-blog</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.nanshuo.icu" title="站长导航网站"><img class="nolazyload back-menu-item-icon" src="/img/nanshuo/avatar.png" alt="站长导航网站"><span class="back-menu-item-text">站长导航网站</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>站长</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tlink/"><i class="solitude  st-tools-fill"></i><span>工具箱</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li><li><a class="site-page child" href="/about/"><i class="solitude  st-contacts-fill"></i><span>关于站长</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/ChatGPT/">ChatGPT<sup>1</sup></a><a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA<sup>1</sup></a><a href="/tags/Java/">Java<sup>3</sup></a><a href="/tags/git/">git<sup>1</sup></a><a href="/tags/docker/">docker<sup>1</sup></a><a href="/tags/Linux/">Linux<sup>1</sup></a><a href="/tags/CentOS/">CentOS<sup>1</sup></a><a href="/tags/nginx/">nginx<sup>1</sup></a><a href="/tags/SpringBoot/">SpringBoot<sup>1</sup></a><a href="/tags/Vue/">Vue<sup>1</sup></a></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude st-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://nanshuo.icu" title="halo-blog"><img class="nolazyload back-menu-item-icon" src="/img/nanshuo/favicon.png" alt="halo-blog"><span class="back-menu-item-text">halo-blog</span></a><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.nanshuo.icu" title="站长导航网站"><img class="nolazyload back-menu-item-icon" src="/img/nanshuo/avatar.png" alt="站长导航网站"><span class="back-menu-item-text">站长导航网站</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">烁烁南光</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">IDEA好用插件</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><span>站长</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/tlink/"><i class="solitude  st-tools-fill"></i><span>工具箱</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li><li><a class="site-page child" href="/about/"><i class="solitude  st-contacts-fill"></i><span>关于站长</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="travellings_button"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.travellings.cn/go.html" title=""><i class="solitude st-train-line"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="solitude st-dice-line"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer" title="搜索"><i class="solitude st-search-line"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="solitude st-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude st-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://ypycdn.nanshuo.icu/posts/idea_chajian/jjava.gif" alt="IDEA好用插件"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/Java/">Java</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/IntelliJ-IDEA/"><span class="tags-name tags-punctuation">IntelliJ IDEA</span></a><a class="post-meta__tags" href="/tags/Java/"><span class="tags-name tags-punctuation">Java</span></a></div></div></div></div><h1 class="post-title">IDEA好用插件</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2023-02-02 00:00:00"><i class="post-meta-icon solitude st-calendar-todo-fill"></i><time datetime="2023-02-01T16:00:00.000Z">2023-02-01T16:00:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2023-02-03 00:00:00"><i class="post-meta-icon solitude st-refresh-line"></i><time datetime="2023-02-02T16:00:00.000Z">2023-02-02T16:00:00.000Z</time></span><span class="post-meta-wordcount"><i class="post-meta-icon solitude st-word-fill" title="文章字数"></i><span class="word-count">2.1k</span><span class="post-meta-separator"></span><i class="post-meta-icon solitude st-clock-fill" title="阅读耗时"></i><span>7 min</span></span><span class="post-meta-position" title="作者IP归属地为广东"><i class="post-meta-icon solitude st-map-pin-fill"></i><span>广东</span></span><a class="post-meta-pv" href="/posts/3fcf3ac3" title="文章热度"><i class="post-meta-icon solitude st-fire-fill"></i><span class="waline-pageview-count"><i class="solitude st-loading-line"></i></span></a><span class="post-meta-commentcount" title="评论数" onclick="sco.scrollTo('post-comment')"><i class="solitude st-chat-fill"></i><a href="/posts/3fcf3ac3#post-comment"><span class="waline-comment-count"><i class="solitude st-loading-line"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>IEDA常用且好用的插件</p>
+<p>友情提示：合理的使用插件能节省时间和提高工作效率,但下载过多的插件会影响IDEA的性能,所以要选择性的下载使用对自己有用的插件,这样能事半功倍哦</p>
+<p>插件分类：IDEA外观、代码优化、快速开发、第三方工具</p>
+<p>下载方式：直接在IDEA设置里找到插件选项，在里面填写插件名称下载即可，十分的简单，也可以离线下载（去插件的官网）</p>
+<p>温馨提示：以下插件并不完善，若同学有更好用的插件也可以分享出来哦，让我的这个插件收集的更加完整，谢谢你们啦</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>由于下载在IDEA下载插件需要联网，所以要保证网络的连通，这样才能顺利的搜索下载</p>
+<p>正常情况下，可以连到网，若连不到，可用下面的解决方法尝试一下，或许对你有帮助哦</p>
+<p>无法联网的情况</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203213153157.png" alt="image-20230203213153157"></p>
+<p>自动代理输入URL：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://plugins.jetbrains.com/">https://plugins.jetbrains.com/</a> 或者 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://127.0.0.1:1080/">http://127.0.0.1:1080</a></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203213450008.png" alt="image-20230203213450008"></p>
+<p>重启后的界面</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203214332634.png" alt="image-20230203214332634"></p>
+<h1 id="IDEA外观"><a href="#IDEA外观" class="headerlink" title="IDEA外观"></a>IDEA外观</h1><h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><p>由于IDEA有自带的背景功能（在设置里面），所以可以不用插件就已经都用了，可以自己自定义图片、图片透明度等操作，可以按照自己的喜爱进行调配。可在文件-设置-外观-背景图像里设置</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203210708811.png" alt="image-20230203210708811"></p>
+<h2 id="主题颜色"><a href="#主题颜色" class="headerlink" title="主题颜色"></a>主题颜色</h2><ul>
+<li>名称：Dark Purple Theme</li>
+<li>说明：顾名思义为紫色夜晚的主题，注意IDEA版本要在2019.1以上才行哦</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203210917830.png" alt="image-20230203210917830"></p>
+<h2 id="文件图标"><a href="#文件图标" class="headerlink" title="文件图标"></a>文件图标</h2><ul>
+<li>名称：Atom Material Icons</li>
+<li>说明：给各个包&#x2F;类&#x2F;文件….换上一个漂亮的图标，颜色多样</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203214453478.png" alt="image-20230203214453478"></p>
+<h2 id="中文插件"><a href="#中文插件" class="headerlink" title="中文插件"></a>中文插件</h2><ul>
+<li>名称：Chinese (Simplified) Language Pack &#x2F;中文语言包</li>
+<li>说明：中文语言包将为您的 IntelliJ IDEA, AppCode, CLion, DataGrip, GoLand, PyCharm, PhpStorm, RubyMine, 和WebStorm 带来完全中文化的界面。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203214526475.png" alt="image-20230203214526475"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203205036989.png" alt="image-20230203205036989"></p>
+<h1 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h1><h2 id="阿里代码规范"><a href="#阿里代码规范" class="headerlink" title="阿里代码规范"></a>阿里代码规范</h2><ul>
+<li>名称：Alibaba Java Coding Guidelines</li>
+<li>说明：这个是阿里巴巴的代码规范插件，是阿里的一套代码规范，利于自己养成良好的写代码的习惯</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203215522984.png" alt="image-20230203215522984"></p>
+<h2 id="代码优化检查"><a href="#代码优化检查" class="headerlink" title="代码优化检查"></a>代码优化检查</h2><ul>
+<li>名称：SonarLint</li>
+<li>说明：SonarLint是一个免费的IDE扩展，可以在您编写代码时查找和修复错误、漏洞和代码!像一个拼写检查器一样，SonarLint突出显示问题，并提供快速修复或清晰的补救指导，帮助您在提交代码之前清理代码。SonarLint支持几种流行和经典的语言，可以帮助各种经验和技能水平的开发人员编写高效、安全的代码。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203220051418.png" alt="image-20230203220051418"></p>
+<h2 id="彩虹括号"><a href="#彩虹括号" class="headerlink" title="彩虹括号"></a>彩虹括号</h2><ul>
+<li>名称：Rainbow Brackets</li>
+<li>说明：Rainbow Brackets(彩虹括号)是一款Intellij IDEA插件, 可以将 (圆括号) [方括号] {花括号} &lt;尖括号&gt; 用不同颜色标记出来, 方便使用者快速识别代码层次, 提高开发效率!</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203225238089.png" alt="image-20230203225238089"></p>
+<h1 id="快速开发"><a href="#快速开发" class="headerlink" title="快速开发"></a>快速开发</h1><h2 id="Lombok插件"><a href="#Lombok插件" class="headerlink" title="Lombok插件"></a>Lombok插件</h2><ul>
+<li>名称：Lombok</li>
+<li>说明：我们在开发过程中，通常都会定义大量的JavaBean，然后通过IDE去生成其属性的构造器、getter、setter、equals、hashcode、toString方法，这样会生成许多不想看见的代码，并且浪费不少时间，lombok插件可以为我们省去这些时间，用起来非常方便。记得要在pom文件中引入该依赖哦！！！</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203215030819.png" alt="image-20230203215030819"></p>
+<h2 id="AI代码助手"><a href="#AI代码助手" class="headerlink" title="AI代码助手"></a>AI代码助手</h2><ul>
+<li>名称：Tabnine AI Code Completion-JS Java Python TS Rust Go PHP &amp; More</li>
+<li>说明：Tabnine是一个AI代码助手，让你成为一个更好的开发人员。Tabnine将在所有最流行的编码语言和ide中通过实时代码完成来提高您的开发速度。无论你称之为智能感知、智能编码、自动补全、AI辅助代码补全、AI驱动代码补全、AI副驾驶、AI代码片段、代码建议、代码预测、代码提示或内容辅助，使用Tabnine都可以极大地影响你的编码速度，显著减少你的编码时间。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203220728372.png" alt="image-20230203220728372"></p>
+<h2 id="测试工具"><a href="#测试工具" class="headerlink" title="测试工具"></a>测试工具</h2><ul>
+<li>名称：JUnitGenerator V2.0</li>
+<li>说明：这个插件通过右键单击“Generate…”生成JUnit测试。菜单，同时专注于Java类。单元测试输出代码可以使用提供的速度模板进行定制，以基于原始类格式化代码。下载成功后可在设置里的其他设置里查看到JUnit Generator选项，可以自定义测试模板等操作，若想把测试类放在springboot项目的test目录下，可以设置Output Path该选项为${SOURCEPATH}&#x2F;..&#x2F;..&#x2F;test&#x2F;java&#x2F;${PACKAGE}&#x2F;${FILENAME}即可</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203221324553.png" alt="image-20230203221324553"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203221916098.png" alt="image-20230203221916098"></p>
+<h2 id="快速生成set方法"><a href="#快速生成set方法" class="headerlink" title="快速生成set方法"></a>快速生成set方法</h2><ul>
+<li>名称：GenerateAllSetter</li>
+<li>说明：一键调用一个对象的所有的set方法</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203222224532.png" alt="image-20230203222224532"></p>
+<h2 id="MybatisX"><a href="#MybatisX" class="headerlink" title="MybatisX"></a>MybatisX</h2><ul>
+<li>名称：MybatisX</li>
+<li>说明：可以实现mapper和xml可以来回跳转，mybatis.xml,mapper.xml提示mapper和xml支持自动提示,当配置连接到数据库时,也可以使用该插件自动生成代码的功能(MybatisX-Generator),直接点击数据库表，鼠标右键就会出现该功能（MybatisX-Generator），配置好相关的属性即可，它的作用是生成表对应的entity(实体类)、mapper(接口层)、service(业务逻辑层)、serviceImpl(实现类)、xml(接口映射），自动生成，实现快速开发</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203222603875.png" alt="image-20230203222603875"></p>
+<h2 id="代码生成器"><a href="#代码生成器" class="headerlink" title="代码生成器"></a>代码生成器</h2><ul>
+<li>名称：EasyCode</li>
+<li>说明：基于IntelliJ IDEA开发的代码生成插件，支持自定义任意模板（Java，html，js，xml）。只要是与数据库相关的代码都可以通过自定义模板来生成。支持数据库类型与java类型映射关系配置。支持同时生成生成多张表的代码。每张表有独立的配置信息。完全的个性化定义，规则由你设置。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203224942033.png" alt="image-20230203224942033"></p>
+<h2 id="Json格式化"><a href="#Json格式化" class="headerlink" title="Json格式化"></a>Json格式化</h2><ul>
+<li>名称：Gsonformat</li>
+<li>说明：将json文件格式化变得更加美观好看清晰</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203230738936.png" alt="image-20230203230738936"></p>
+<h2 id="生成注释文档"><a href="#生成注释文档" class="headerlink" title="生成注释文档"></a>生成注释文档</h2><ul>
+<li>名称：Easy Javadoc</li>
+<li>说明：能帮助开发者快速生成类、方法、属性等中文注释、文档，快捷键是ctrl+&#x2F;</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203231558818.png" alt="image-20230203231558818"></p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><ul>
+<li>名称：SequenceDiagram</li>
+<li>说明：使用这个插件，您可以生成简单序列图。通过单击关系图形状来导航代码。从图中删除类。将图表导出为图像(SVG、JPEG、PNG、TIFF)。将图表导出为PlantUML, Mermaid格式文件。在接手老项目时，一上手很难窥到全貌，这时候要是能够把接口的调用关系，整个时序图展示出来，对深入了解项目帮助很大。刚好有这么一款插件SequenceDiagram能够根据方法的调用关系，自动生成执行时序图。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203232011175.png" alt="image-20230203232011175"></p>
+<h1 id="第三方工具"><a href="#第三方工具" class="headerlink" title="第三方工具"></a>第三方工具</h1><h2 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h2><ul>
+<li>名称：Transaction</li>
+<li>说明：翻译英文插件，支持谷歌，微软，百度，有道等翻译</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203223154353.png" alt="image-20230203223154353"></p>
+<h2 id="测试请求"><a href="#测试请求" class="headerlink" title="测试请求"></a>测试请求</h2><ul>
+<li>名称：RestfulTool</li>
+<li>说明：类似Postman软件一样，用来测试请求的</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203223350451.png" alt="image-20230203223350451"></p>
+<h2 id="ignore"><a href="#ignore" class="headerlink" title=".ignore"></a>.ignore</h2><ul>
+<li>名称：.ignore</li>
+<li>说明：用途是排除不需要提交的文件，例如提交代码到远程仓库时，有些文件是不需要提交的，这是可以用到这个插件</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203223709996.png" alt="image-20230203223709996"></p>
+<h2 id="快捷键的学习"><a href="#快捷键的学习" class="headerlink" title="快捷键的学习"></a>快捷键的学习</h2><ul>
+<li>名称：Key Promoter X</li>
+<li>说明：提示某些鼠标操作可以通过快捷键的方式进行，记录使用快捷键的次数，提示使用快捷键的方式进行操作，方便开发者更快速的记忆快捷键，通过快捷键来高效工作</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203224321215.png" alt="image-20230203224321215"></p>
+<h2 id="maven-helper"><a href="#maven-helper" class="headerlink" title="maven-helper"></a>maven-helper</h2><ul>
+<li>名称：Maven Helper</li>
+<li>说明：使用Maven必须有一个插件。分析和排除包含当前文件的模块运行&#x2F;调试maven目标的冲突依赖项操作的简单方法，或在根模块操作上打开当前maven模块路径操作的终端以运行&#x2F;调试当前测试文件。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203224732473.png" alt="image-20230203224732473"></p>
+<h2 id="防沉迷写代码"><a href="#防沉迷写代码" class="headerlink" title="防沉迷写代码"></a>防沉迷写代码</h2><ul>
+<li>名称：StopCoding</li>
+<li>说明：如果你也经常沉迷于写代码,忘了起身休息喝水,那么试试这个插件吧在菜单栏的Tools中,打开StopCoding插件进行设置，设置工作时间和休息时间,并且保存当设置的时间一到,就会有弹框提醒你休息,让你暂时不能操作idea</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203230138905.png" alt="image-20230203230138905"></p>
+<h2 id="统计信息"><a href="#统计信息" class="headerlink" title="统计信息"></a>统计信息</h2><ul>
+<li>名称：Statistic</li>
+<li>说明：显示项目统计信息。这个插件显示文件按扩展名和大小、行数、LOC等进行排序。用户可以使用“选择时刷新”按钮选择(项目&#x2F;模块&#x2F;包&#x2F;文件)范围。(此插件需要Java 1.8)</li>
+</ul>
+<p><img src= "/img/loading.gif" data-lazy-src="https://ypycdn.nanshuo.icu/posts/idea_chajian/image-20230203232306681.png" alt="image-20230203232306681"></p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/nanshuo/about/ikun.jpg"></a><div class="post-copyright__author_name">烁烁南光</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude st-hand-heart-fill"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏。</span><ul class="reward-group"><li class="reward-item"><a href="/img/nanshuo/weixinzhifu.png"><img class="post-qr-code-img nolazyload" src="/img/nanshuo/weixinzhifu.png" alt="微信支付" style="border-color: var(--efu-purple)"></a><div class="post-qr-code-desc">微信支付</div></li><li class="reward-item"><a href="/img/nanshuo/zhifubaozhifu.png"><img class="post-qr-code-img nolazyload" src="/img/nanshuo/zhifubaozhifu.png" alt="支付宝支付" style="border-color: var(--efu-black)"></a><div class="post-qr-code-desc">支付宝支付</div></li></ul><a class="reward-main-btn" href="/about"><div class="reward-text">赞赏名单</div><div class="reward-dec">因为有你们的支持，我才体会到写文章的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script><div class="reward-link mode"><a class="reward-link-button" href="/atom.xml"><i class="solitude st-plant-fill"></i>订阅</a></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">烁烁南光</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/IntelliJ-IDEA/"><span class="tags-punctuation"></span>IntelliJ IDEA<span class="tagsPageCount">1</span></a><a class="post-meta__tags" href="/tags/Java/"><span class="tags-punctuation"></span>Java<span class="tagsPageCount">3</span></a></div></div><div class="social-share"><a class="social-share-ico icon-qq" target="_blank" rel="noopener external nofollow noreferrer" href="https://connect.qq.com/widget/shareqq/index.html?url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F3fcf3ac3&amp;title=IDEA%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6&amp;desc=undefined&amp;summary=undefined&amp;site=IDEA%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6&amp;pics=https%3A%2F%2Fypycdn.nanshuo.icu%2Fposts%2Fidea_chajian%2Fjjava.gif" title="QQ"></a><a class="social-share-ico icon-weibo" target="_blank" rel="noopener external nofollow noreferrer" href="http://service.weibo.com/share/share.php?url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F3fcf3ac3&amp;title=IDEA%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6&amp;pic=https%3A%2F%2Fypycdn.nanshuo.icu%2Fposts%2Fidea_chajian%2Fjjava.gif" title="Weibo"></a><a class="social-share-ico icon-twitter" target="_blank" rel="noopener external nofollow noreferrer" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F3fcf3ac3&amp;text=IDEA%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6" title="Twitter"></a><a class="social-share-ico icon-facebook" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F3fcf3ac3" title="Facebook"></a><a class="social-share-ico icon-telegram" target="_blank" rel="noopener external nofollow noreferrer" href="https://t.me/share/url?url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F3fcf3ac3&amp;text=IDEA%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6" title="Telegram"></a><a class="social-share-ico icon-whatsapp" target="_blank" rel="noopener external nofollow noreferrer" href="https://api.whatsapp.com/send?text=IDEA%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6 https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F3fcf3ac3" title="WhatsApp"></a><a class="social-share-ico icon-linkedin" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fnanshuo0814.github.io%2Fposts%2F3fcf3ac3&amp;title=IDEA%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6&amp;summary=undefined&amp;source=IDEA%E5%A5%BD%E7%94%A8%E6%8F%92%E4%BB%B6" title="LinkedIn"></a></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/755ce520"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue2基础学习</div></div></a></div><div class="next-post pull-right"><a href="/posts/65632ce1"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Docker基础学习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="solitude st-star-smile-fill"></i><span>喜欢这篇的人也看了</span><div class="relatedPosts-link"><a onclick="event.preventDefault(); toRandomPost();" href="javascript:void(0);" rel="external nofollow" data-pjax-state="">随便逛逛</a></div></div><div class="relatedPosts-list"><div><a href="/posts/3d10ab08" title="前后端项目部署笔记(基于CentOS7)"><img class="cover" src="https://ypycdn.nanshuo.icu/posts/qhdbs/qianhouduanbushu.jpg" alt="cover"><div class="content is-center"><div class="title">前后端项目部署笔记(基于CentOS7)</div></div></a></div><div><a href="/posts/9da0650b" title="Java Tool"><img class="cover" src="https://ypycdn.nanshuo.icu/posts/java_utils/java.jpeg" alt="cover"><div class="content is-center"><div class="title">Java Tool</div></div></a></div></div></div><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="solitude st-chat-fill"></i><span> 评论</span><span class="count"> (<span class="waline-comment-count"><i class="solitude st-loading-line"></i></span>)</span></div><div class="comment-switch"><span class="first">Waline</span><span id="switch-btn"></span><span class="second">Twikkoo</span></div></div><div class="comment-wrap"><div id="waline-wrap"></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="/img/nanshuo/avatar.png"><div class="avatar-sticker"><img class="avatar-sticker-img" src="/img/nanshuo/avatar.gif" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">你好，来自各地的小友<br/>有朋自远方来，不亦乐乎!</div><div class="author-info__description2">站长：南烁<br/>生日：2003年08月14日<br/>邮箱：nanshuo.icu@qq.com</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">南烁</div><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nanshuo0814" title="Github"><i class="solitude  st-github-line"></i></a><a class="social-icon" target="_blank" rel="noopener external nofollow noreferrer" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=nanshuo.icu@qq.com" title="Email"><i class="solitude  st-mail-line"></i></a></div></div></div></div><div class="card-widget card-platform"><div id="flip-wrapper"><div id="flip-content"><div class="face"></div><div class="back face"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IDEA%E5%A4%96%E8%A7%82"><span class="toc-text">IDEA外观</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="toc-text">背景图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2"><span class="toc-text">主题颜色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%9B%BE%E6%A0%87"><span class="toc-text">文件图标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E6%8F%92%E4%BB%B6"><span class="toc-text">中文插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96"><span class="toc-text">代码优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-text">阿里代码规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%A3%80%E6%9F%A5"><span class="toc-text">代码优化检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%A9%E8%99%B9%E6%8B%AC%E5%8F%B7"><span class="toc-text">彩虹括号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91"><span class="toc-text">快速开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombok%E6%8F%92%E4%BB%B6"><span class="toc-text">Lombok插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AI%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B"><span class="toc-text">AI代码助手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">测试工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90set%E6%96%B9%E6%B3%95"><span class="toc-text">快速生成set方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MybatisX"><span class="toc-text">MybatisX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-text">代码生成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Json%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-text">Json格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%B3%A8%E9%87%8A%E6%96%87%E6%A1%A3"><span class="toc-text">生成注释文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E5%9B%BE"><span class="toc-text">时序图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B7%A5%E5%85%B7"><span class="toc-text">第三方工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BF%BB%E8%AF%91"><span class="toc-text">翻译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%AF%B7%E6%B1%82"><span class="toc-text">测试请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ignore"><span class="toc-text">.ignore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-text">快捷键的学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#maven-helper"><span class="toc-text">maven-helper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E6%B2%89%E8%BF%B7%E5%86%99%E4%BB%A3%E7%A0%81"><span class="toc-text">防沉迷写代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF"><span class="toc-text">统计信息</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3d10ab08" title="前后端项目部署笔记(基于CentOS7)"><img alt="前后端项目部署笔记(基于CentOS7)" src="https://ypycdn.nanshuo.icu/posts/qhdbs/qianhouduanbushu.jpg"></a><div class="content"><a class="title" href="/posts/3d10ab08" title="前后端项目部署笔记(基于CentOS7)">前后端项目部署笔记(基于CentOS7)</a><a class="article-recent_post_categories" href="/posts/3d10ab08">CentOS</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/df0d5506" title="使用ChatGPT官网教程"><img alt="使用ChatGPT官网教程" src="https://ypycdn.nanshuo.icu/posts/chatgpt/gpt.jpg"></a><div class="content"><a class="title" href="/posts/df0d5506" title="使用ChatGPT官网教程">使用ChatGPT官网教程</a><a class="article-recent_post_categories" href="/posts/df0d5506">ChatGPT</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/755ce520" title="Vue2基础学习"><img alt="Vue2基础学习" src="https://ypycdn.nanshuo.icu/posts/vue/vue.webp"></a><div class="content"><a class="title" href="/posts/755ce520" title="Vue2基础学习">Vue2基础学习</a><a class="article-recent_post_categories" href="/posts/755ce520">Vue</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3fcf3ac3" title="IDEA好用插件"><img alt="IDEA好用插件" src="https://ypycdn.nanshuo.icu/posts/idea_chajian/jjava.gif"></a><div class="content"><a class="title" href="/posts/3fcf3ac3" title="IDEA好用插件">IDEA好用插件</a><a class="article-recent_post_categories" href="/posts/3fcf3ac3">Java</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/65632ce1" title="Docker基础学习"><img alt="Docker基础学习" src="https://ypycdn.nanshuo.icu/posts/docker_learn/Docker.jpeg"></a><div class="content"><a class="title" href="/posts/65632ce1" title="Docker基础学习">Docker基础学习</a><a class="article-recent_post_categories" href="/posts/65632ce1">docker</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span>烁烁南光</span></div><div class="footer-bar-description">来自 南烁 的文章</div><a class="footer-bar-link" href="/about/">了解更多</a></div><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nanshuo0814" title="Github"><i class="solitude  st-github-line"></i></a><div class="nolazyload footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img src= "/img/loading.gif" data-lazy-src="/img/nanshuo/about/ikun.jpg" alt="返回顶部"></div><a class="deal_link" href="mailto:nanshuo.icu@qq.com" rel="external nofollow noreferrer" title="Mail"><i class="solitude  st-mail-line"></i></a></div><div id="st-footer"><div class="footer-group"><h3 class="footer-title">导航</h3><div class="footer-links"><a class="footer-item" href="/archives/" title="归档">归档</a><a class="footer-item" href="/categories/" title="分类">分类</a><a class="footer-item" href="/tags/" title="标签">标签</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/cookies/" title="Cookies">Cookies</a><a class="footer-item" href="/privacy/" title="用户协议">用户协议</a><a class="footer-item" href="/copyright/" title="版权协议">版权协议</a></div></div><div class="footer-group"><h3 class="footer-title">站长</h3><div class="footer-links"><a class="footer-item" href="/tlink/" title="工具箱">工具箱</a><a class="footer-item" href="/music/" title="音乐馆">音乐馆</a><a class="footer-item" href="/about/" title="关于页">关于页</a></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2024 By&nbsp;<a class="footer-bar-link" href="/">南烁</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/valor-x/hexo-theme-solitude" alt="主题">主题</a><a class="footer-bar-link" href="/atom.xml" alt="订阅">订阅</a><a class="footer-bar-link cc" href="/copyright" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div><div class="needEndHide" id="cookies-window"><div class="cookies-window-title">协议提醒助手</div><div class="cookies-window-content"><span class="cookies-tip">查看本站为你的个人隐私做出的努力</span><a class="cookies-link" href="/privacy" title="本站如何保护你的隐私"><i class="solitude st-right-btn-fill"></i></a></div></div><div class="comment-barrage needEndHide"></div></footer></div><!-- right_menu--><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="solitude st-arrow-left-line"></i></div><div class="rightMenu-item" id="menu-forward"><i class="solitude st-arrow-right-line"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="solitude st-restart-line"></i></div><div class="rightMenu-item" id="menu-top"><i class="solitude st-arrow-up-line"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="solitude st-copy-fill"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="solitude st-clipboard-fill"></i><span>粘贴文本</span></div><div class="rightMenu-item" id="menu-commenttext"><i class="solitude st-chat-new-fill"></i><span>引用到评论</span></div><div class="rightMenu-item" id="menu-newwindow"><i class="solitude st-window-fill"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="solitude st-link-line"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="solitude st-copy-fill"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="solitude st-download-cloud-fill"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-search"><i class="solitude st-search-line"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="solitude st-play-fill"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="solitude st-skip-back-fill"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="solitude st-skip-forward-fill"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="solitude st-copy-fill"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-randomPost" onclick="toRandomPost()||rm.hideRightMenu()"><i class="solitude st-signal-tower-fill"></i><span>随机短文</span></div><div class="rightMenu-item" onclick="pjax.loadUrl('/categories/')||rm.hideRightMenu()"><i class="solitude st-checkbox-multiple-blank-fill"></i><span>全部分类</span></div><div class="rightMenu-item" onclick="pjax.loadUrl('/tags/')||rm.hideRightMenu()"><i class="solitude st-price-tag-fill"></i><span>全部标签</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-commentBarrage" onclick="sco.switchCommentBarrage()"><i class="solitude st-chat-fill"></i><span class="menu-commentBarrage-text">关闭热评</span></div><div class="rightMenu-item" id="menu-darkmode" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span class="menu-darkmode-text">深色模式</span></div><div class="rightMenu-item" id="menu-translate"><i class="solitude st-panben-line"></i><span>轉為繁體</span></div></div></div><div id="rightmenu-mask"></div><!-- inject body--><div><script src="/js/utils.js?v=1.11.0"></script><script src="/js/main.js?v=1.11.0"></script><script src="/js/third_party/waterfall.min.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.11.0"></script><script>dark()
+</script><script src="/js/tw_cn.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.min.js"></script><script>var meting_api = 'https://meting.qjqq.cn/?server=:server&type=:type&id=:id&auth=:auth&r=:r';</script><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/meting/2.0.1/Meting.min.js"></script><script src="/js/covercolor/local.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.68.1/instantsearch.production.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.23.3/algoliasearch-lite.umd.min.js"></script><script src="/js/right_menu.js?v=1.11.0"></script><div class="js-pjax"><script>(() => {
+    let walineInitFunction = window.walineFn || null
+
+    function initWaline(initFn) {
+        const walineOptions = {
+            el: '#waline-wrap',
+            serverURL: 'https://waline.nanshuo.icu',
+            pageview: true,
+            dark: 'html[data-theme="dark"]',
+            path: window.location.pathname,
+            comment: true,
+            ...null
+        }
+        const walineInstance = initFn(walineOptions)
+        utils.addGlobalFn('pjax', () => walineInstance.destroy(), 'destroyWaline')
+        GLOBAL_CONFIG.lightbox && utils.lightbox(document.querySelectorAll('#comment .wl-content img:not(.wl-emoji)'))
+        sco.owoBig({
+            body: '.wl-emoji-popup',
+            item: '.wl-tab-wrapper button'
+        })
+    }
+
+    async function loadWaline() {
+        if (walineInitFunction) initWaline(walineInitFunction)
+        else {
+            await utils.getCSS('https://cdnjs.cloudflare.com/ajax/libs/waline/3.1.3/waline.min.css')
+            const {init} = await import('https://cdnjs.cloudflare.com/ajax/libs/waline/3.1.3/waline.min.js')
+            walineInitFunction = init || Waline.init
+            initWaline(walineInitFunction)
+            window.walineFn = walineInitFunction
+        }
+        true && barrageWaline()
+    }
+
+    if (true || true) {
+        if (true) utils.loadComment(document.getElementById('waline-wrap'), loadWaline)
+        else loadWaline()
+    } else window.loadTwoComment = loadWaline
+})()
+</script><script>async function barrageWaline() {
+    const url = new URL('https://waline.nanshuo.icu/api/comment')
+    const params = {path: window.location.pathname, sortBy: 'insertedAt_asc'}
+    Object.entries(params).forEach(([key, value]) => url.searchParams.append(key, value))
+    await fetch(url).then(async res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        const data = await res.json();
+        const regex = /<img [^>]*class="wl-emoji"[^>]*>/;
+        const init = () => {
+            initializeCommentBarrage(data.data.data
+                .map(item => ({
+                    nick: item.nick,
+                    mailId: item.avatar,
+                    content: item.comment.replace(regex, ''),
+                    id: item.objectId
+                })))
+        }
+        if (typeof initializeCommentBarrage === "undefined") await utils.getScript('/js/third_party/barrage.min.js?v=1.11.0').then(init)
+        else init()
+    }).catch(error => console.error("An error occurred while fetching comments: ", error))
+}</script><script defer pjax src="https://cdnjs.cloudflare.com/ajax/libs/busuanzi/2.3.0/bsz.pure.mini.min.js"></script></div></div><!-- newest comment--><script>window.addEventListener('load', () => {
+    const changeContent = (content) => {
+        if (content === '') return content;
+
+        const replacements = [
+            {regex: /<img.*?src="(.*?)"?[^\>]+>/ig, replacement: '[图片]'},
+            {
+                regex: /<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi,
+                replacement: '[链接]'
+            },
+            {regex: /<pre><code>.*?<\/pre>/gi, replacement: '[代码]'},
+            {regex: /<[^>]+>/g, replacement: ""}
+        ];
+
+        content = replacements.reduce((str, {regex, replacement}) => str.replace(regex, replacement), content);
+
+        return content.length > 150 ? content.substring(0, 150) + '...' : content;
+    }
+
+    const $asideList = document.querySelector('#card-newest-comments .aside-list')
+    const newestCommentInit = () => {
+        const data = utils.saveToLocal.get('waline-newest-comment')
+        if (data) {
+            generateHtml(data)
+        } else {
+            getComment()
+        }
+    }
+
+    const getComment = async () => {
+        await fetch('https://waline.nanshuo.icu/api/comment?type=recent&count=6', {method: 'GET'}).then(async res => {
+            const result = await res.json()
+            const walineArray = result.data.map(e => {
+                return {
+                    'content': changeContent(e.comment),
+                    'avatar': e.avatar,
+                    'nick': e.nick,
+                    'url': e.url + '#' + e.objectId,
+                    'date': new Date(e.time || e.insertedAt)
+                }
+            })
+            utils.saveToLocal.set('waline-newest-comment', walineArray, 0.5)
+            generateHtml(walineArray)
+        }).catch(error => {
+            console.error(error)
+            $asideList.textContent = "无法获取评论，请确认相关配置是否正确。"
+        })
+    }
+
+    const generateHtml = array => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML = array.length ? array.map(item => `
+            <div class='aside-list-item'>
+              <div onclick='pjax.loadUrl("${item.url}")' class='thumbnail'>
+                <img src= "/img/loading.gif" data-lazy-src='${item.avatar}' alt='${item.nick}'>
+                <div class='name'><span>${item.nick}</span></div>
+              </div>
+              <div class='content'>
+                <div class='comment' onclick='pjax.loadUrl("${item.url}")'>${item.content}</div>
+                <time class="datetime" datetime="${item.date}"></time>
+              </div>
+            </div>
+          `).join('') : "没有评论"
+        window.lazyLoadInstance?.update()
+        window.pjax?.refresh()
+        sco?.changeTimeFormat(document.querySelectorAll('.aside-list-item time'))
+    }
+
+    newestCommentInit()
+})</script><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ['title','#body-wrap','#site-config','meta[name="description"]','.js-pjax','meta[property^="og:"]','#config-diff'],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    is_rm && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- google adsense--><!-- search--><div id="algolia-search"><div class="search-dialog"><div class="algolia-navbar"><div class="search-dialog__title" id="algolia-search-title">搜索</div><div class="algolia-tips"><i class="solitude st-algolia-fill"></i><span class="algolia-tips-text">Algolia</span></div><span class="search-close-button"><i class="solitude st-close-fill"></i></span></div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><div id="search-results"><div id="algolia-hits"></div></div><div id="algolia-tips"><div id="algolia-pagination"></div><div id="algolia-stats"></div></div></div><div id="search-mask"></div></div><script src="/js/search/algolia.js?v=1.11.0"></script><!-- Tianli-Talk--><!-- music--><div class="needEndHide" id="nav-music" onclick="sco.musicToggle()"><div id="nav-music-hoverTips">音乐已暂停</div><meting-js id="8853506106" server="netease" type="playlist" mutex="true" preload="none" data-lrctype="0" order="random" theme="var(--efu-main)"></meting-js></div></body></html><script>const posts=["posts/3d10ab08","posts/df0d5506","posts/755ce520","posts/3fcf3ac3","posts/65632ce1","posts/53af7255","posts/deb5175a","posts/932aaee2","posts/9da0650b"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>

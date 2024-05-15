@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>烁烁南光</title>
+  
+  
+  <link href="https://nanshuo0814.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://nanshuo0814.github.io/"/>
+  <updated>2024-05-15T14:02:50.446Z</updated>
+  <id>https://nanshuo0814.github.io/</id>
+  
+  <author>
+    <name>南烁</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前后端项目部署笔记(基于CentOS7)</title>
+    <link href="https://nanshuo0814.github.io/posts/3d10ab08"/>
+    <id>https://nanshuo0814.github.io/posts/3d10ab08</id>
+    <published>2024-03-16T16:00:00.000Z</published>
+    <updated>2024-05-15T14:02:50.446Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前后端项目部署笔记-Centos&quot;&gt;&lt;a href=&quot;#前后端项目部署笔记-Centos&quot; class=&quot;headerlink&quot; title=&quot;前后端项目部署笔记(Centos)&quot;&gt;&lt;/a&gt;前后端项目部署笔记(Centos)&lt;/h1&gt;&lt;p&gt;本文使用了腾讯云的&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CentOS" scheme="https://nanshuo0814.github.io/categories/CentOS/"/>
+    
+    <category term="云服务器" scheme="https://nanshuo0814.github.io/categories/CentOS/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="宝塔" scheme="https://nanshuo0814.github.io/categories/CentOS/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%AE%9D%E5%A1%94/"/>
+    
+    
+    <category term="Java" scheme="https://nanshuo0814.github.io/tags/Java/"/>
+    
+    <category term="CentOS" scheme="https://nanshuo0814.github.io/tags/CentOS/"/>
+    
+    <category term="nginx" scheme="https://nanshuo0814.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用ChatGPT官网教程</title>
+    <link href="https://nanshuo0814.github.io/posts/df0d5506"/>
+    <id>https://nanshuo0814.github.io/posts/df0d5506</id>
+    <published>2023-02-13T16:00:00.000Z</published>
+    <updated>2023-02-18T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">有东西被加密了, 请输入密码查看.</summary>
+    
+    
+    
+    <category term="ChatGPT" scheme="https://nanshuo0814.github.io/categories/ChatGPT/"/>
+    
+    
+    <category term="ChatGPT" scheme="https://nanshuo0814.github.io/tags/ChatGPT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue2基础学习</title>
+    <link href="https://nanshuo0814.github.io/posts/755ce520"/>
+    <id>https://nanshuo0814.github.io/posts/755ce520</id>
+    <published>2023-02-07T16:00:00.000Z</published>
+    <updated>2023-02-14T16:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Vue2的基础学习&lt;br&gt;点击&lt;a href=&quot;https://cn.vuejs.org/&quot;&gt;这里&lt;/a&gt;进入Vue的官网学习&lt;br&gt;本文是基于&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Vue" scheme="https://nanshuo0814.github.io/categories/Vue/"/>
+    
+    
+    <category term="Vue" scheme="https://nanshuo0814.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA好用插件</title>
+    <link href="https://nanshuo0814.github.io/posts/3fcf3ac3"/>
+    <id>https://nanshuo0814.github.io/posts/3fcf3ac3</id>
+    <published>2023-02-01T16:00:00.000Z</published>
+    <updated>2023-02-02T16:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;IEDA常用且好用的插件&lt;/p&gt;
+&lt;p&gt;友情提示：合理的使用插件能节省时间和提高工作效率,但下载过多的插件会影响IDEA的性能,所以要选择性的下载使用对自己有用的插件,这样能事半功倍哦&lt;/p&gt;
+&lt;p&gt;插件分类：IDEA外观、代码优化、快速开发、第三方工具&lt;/p&gt;
+&lt;p&gt;下载</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://nanshuo0814.github.io/categories/Java/"/>
+    
+    
+    <category term="IntelliJ IDEA" scheme="https://nanshuo0814.github.io/tags/IntelliJ-IDEA/"/>
+    
+    <category term="Java" scheme="https://nanshuo0814.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker基础学习</title>
+    <link href="https://nanshuo0814.github.io/posts/65632ce1"/>
+    <id>https://nanshuo0814.github.io/posts/65632ce1</id>
+    <published>2023-01-27T16:00:00.000Z</published>
+    <updated>2023-01-30T16:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Docker容器的认识&quot;&gt;&lt;a href=&quot;#Docker容器的认识&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="docker" scheme="https://nanshuo0814.github.io/categories/docker/"/>
+    
+    
+    <category term="docker" scheme="https://nanshuo0814.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git工具常用命令</title>
+    <link href="https://nanshuo0814.github.io/posts/53af7255"/>
+    <id>https://nanshuo0814.github.io/posts/53af7255</id>
+    <published>2023-01-14T16:00:00.000Z</published>
+    <updated>2023-01-15T16:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Git命令相关学习&lt;/p&gt;
+&lt;h1 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h1&gt;&lt;p&gt;点击&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="git" scheme="https://nanshuo0814.github.io/categories/git/"/>
+    
+    
+    <category term="git" scheme="https://nanshuo0814.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux学习</title>
+    <link href="https://nanshuo0814.github.io/posts/deb5175a"/>
+    <id>https://nanshuo0814.github.io/posts/deb5175a</id>
+    <published>2023-01-06T16:00:00.000Z</published>
+    <updated>2023-01-13T16:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;基于win10&amp;#x2F;win11电脑的Linux的相关学习&lt;br&gt;Linux操作系统有很多个发行版本，本文章主要是基于CentOS发行版的Linux操作系统来进行Linux的学习外加上Ubuntu发行版的Linux操作系统进行辅助学习。目前Ce</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://nanshuo0814.github.io/categories/Linux/"/>
+    
+    <category term="虚拟机" scheme="https://nanshuo0814.github.io/categories/Linux/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+    <category term="Linux" scheme="https://nanshuo0814.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot的pom.xml依赖</title>
+    <link href="https://nanshuo0814.github.io/posts/932aaee2"/>
+    <id>https://nanshuo0814.github.io/posts/932aaee2</id>
+    <published>2022-12-11T16:00:00.000Z</published>
+    <updated>2024-05-15T14:00:49.713Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;SpringBoot项目常用的pom.xml依赖&lt;br&gt;总结关于一些springboot项目常用到的依赖坐标，基于maven项目&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;pom-xml&quot;&gt;&lt;a href=&quot;#pom-xml&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://nanshuo0814.github.io/categories/Java/"/>
+    
+    
+    <category term="SpringBoot" scheme="https://nanshuo0814.github.io/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Tool</title>
+    <link href="https://nanshuo0814.github.io/posts/9da0650b"/>
+    <id>https://nanshuo0814.github.io/posts/9da0650b</id>
+    <published>2022-11-10T16:00:00.000Z</published>
+    <updated>2024-05-15T13:59:18.065Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;随机数验证码&quot;&gt;&lt;a href=&quot;#随机数验证码&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://nanshuo0814.github.io/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="https://nanshuo0814.github.io/tags/Java/"/>
+    
+  </entry>
+  
+</feed>
