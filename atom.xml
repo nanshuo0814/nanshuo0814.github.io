@@ -3,11 +3,11 @@
   <title>烁烁南光</title>
   <icon>https://www.gravatar.com/avatar/4e211d0676dad536a887e6106e563a0a</icon>
   
-  <link href="https://nanshuo0814.github.io/atom.xml" rel="self"/>
+  <link href="https://localhost:4000/atom.xml" rel="self"/>
   
-  <link href="https://nanshuo0814.github.io/"/>
+  <link href="https://localhost:4000/"/>
   <updated>2024-05-15T14:02:50.446Z</updated>
-  <id>https://nanshuo0814.github.io/</id>
+  <id>https://localhost:4000/</id>
   
   <author>
     <name>南烁</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>前后端项目部署笔记(基于CentOS7)</title>
-    <link href="https://nanshuo0814.github.io/posts/3d10ab08"/>
-    <id>https://nanshuo0814.github.io/posts/3d10ab08</id>
+    <link href="https://localhost:4000/posts/3d10ab08/"/>
+    <id>https://localhost:4000/posts/3d10ab08/</id>
     <published>2024-03-16T16:00:00.000Z</published>
     <updated>2024-05-15T14:02:50.446Z</updated>
     
@@ -34,25 +34,25 @@
     
     
     
-    <category term="CentOS" scheme="https://nanshuo0814.github.io/categories/CentOS/"/>
+    <category term="CentOS" scheme="https://localhost:4000/categories/CentOS/"/>
     
-    <category term="云服务器" scheme="https://nanshuo0814.github.io/categories/CentOS/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <category term="云服务器" scheme="https://localhost:4000/categories/CentOS/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
-    <category term="宝塔" scheme="https://nanshuo0814.github.io/categories/CentOS/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%AE%9D%E5%A1%94/"/>
+    <category term="宝塔" scheme="https://localhost:4000/categories/CentOS/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%AE%9D%E5%A1%94/"/>
     
     
-    <category term="Java" scheme="https://nanshuo0814.github.io/tags/Java/"/>
+    <category term="Java" scheme="https://localhost:4000/tags/Java/"/>
     
-    <category term="CentOS" scheme="https://nanshuo0814.github.io/tags/CentOS/"/>
+    <category term="CentOS" scheme="https://localhost:4000/tags/CentOS/"/>
     
-    <category term="nginx" scheme="https://nanshuo0814.github.io/tags/nginx/"/>
+    <category term="nginx" scheme="https://localhost:4000/tags/nginx/"/>
     
   </entry>
   
   <entry>
     <title>使用ChatGPT官网教程</title>
-    <link href="https://nanshuo0814.github.io/posts/df0d5506"/>
-    <id>https://nanshuo0814.github.io/posts/df0d5506</id>
+    <link href="https://localhost:4000/posts/df0d5506/"/>
+    <id>https://localhost:4000/posts/df0d5506/</id>
     <published>2023-02-13T16:00:00.000Z</published>
     <updated>2023-02-18T16:00:00.000Z</updated>
     
@@ -61,17 +61,17 @@
     
     
     
-    <category term="ChatGPT" scheme="https://nanshuo0814.github.io/categories/ChatGPT/"/>
+    <category term="ChatGPT" scheme="https://localhost:4000/categories/ChatGPT/"/>
     
     
-    <category term="ChatGPT" scheme="https://nanshuo0814.github.io/tags/ChatGPT/"/>
+    <category term="ChatGPT" scheme="https://localhost:4000/tags/ChatGPT/"/>
     
   </entry>
   
   <entry>
     <title>Vue2基础学习</title>
-    <link href="https://nanshuo0814.github.io/posts/755ce520"/>
-    <id>https://nanshuo0814.github.io/posts/755ce520</id>
+    <link href="https://localhost:4000/posts/755ce520/"/>
+    <id>https://localhost:4000/posts/755ce520/</id>
     <published>2023-02-07T16:00:00.000Z</published>
     <updated>2023-02-14T16:00:00.000Z</updated>
     
@@ -87,17 +87,17 @@
     
     
     
-    <category term="Vue" scheme="https://nanshuo0814.github.io/categories/Vue/"/>
+    <category term="Vue" scheme="https://localhost:4000/categories/Vue/"/>
     
     
-    <category term="Vue" scheme="https://nanshuo0814.github.io/tags/Vue/"/>
+    <category term="Vue" scheme="https://localhost:4000/tags/Vue/"/>
     
   </entry>
   
   <entry>
     <title>IDEA好用插件</title>
-    <link href="https://nanshuo0814.github.io/posts/3fcf3ac3"/>
-    <id>https://nanshuo0814.github.io/posts/3fcf3ac3</id>
+    <link href="https://localhost:4000/posts/3fcf3ac3/"/>
+    <id>https://localhost:4000/posts/3fcf3ac3/</id>
     <published>2023-02-01T16:00:00.000Z</published>
     <updated>2023-02-02T16:00:00.000Z</updated>
     
@@ -115,19 +115,19 @@
     
     
     
-    <category term="Java" scheme="https://nanshuo0814.github.io/categories/Java/"/>
+    <category term="Java" scheme="https://localhost:4000/categories/Java/"/>
     
     
-    <category term="IntelliJ IDEA" scheme="https://nanshuo0814.github.io/tags/IntelliJ-IDEA/"/>
+    <category term="IntelliJ IDEA" scheme="https://localhost:4000/tags/IntelliJ-IDEA/"/>
     
-    <category term="Java" scheme="https://nanshuo0814.github.io/tags/Java/"/>
+    <category term="Java" scheme="https://localhost:4000/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>Docker基础学习</title>
-    <link href="https://nanshuo0814.github.io/posts/65632ce1"/>
-    <id>https://nanshuo0814.github.io/posts/65632ce1</id>
+    <link href="https://localhost:4000/posts/65632ce1/"/>
+    <id>https://localhost:4000/posts/65632ce1/</id>
     <published>2023-01-27T16:00:00.000Z</published>
     <updated>2023-01-30T16:00:00.000Z</updated>
     
@@ -142,17 +142,17 @@
     
     
     
-    <category term="docker" scheme="https://nanshuo0814.github.io/categories/docker/"/>
+    <category term="docker" scheme="https://localhost:4000/categories/docker/"/>
     
     
-    <category term="docker" scheme="https://nanshuo0814.github.io/tags/docker/"/>
+    <category term="docker" scheme="https://localhost:4000/tags/docker/"/>
     
   </entry>
   
   <entry>
     <title>Git工具常用命令</title>
-    <link href="https://nanshuo0814.github.io/posts/53af7255"/>
-    <id>https://nanshuo0814.github.io/posts/53af7255</id>
+    <link href="https://localhost:4000/posts/53af7255/"/>
+    <id>https://localhost:4000/posts/53af7255/</id>
     <published>2023-01-14T16:00:00.000Z</published>
     <updated>2023-01-15T16:00:00.000Z</updated>
     
@@ -168,17 +168,17 @@
     
     
     
-    <category term="git" scheme="https://nanshuo0814.github.io/categories/git/"/>
+    <category term="git" scheme="https://localhost:4000/categories/git/"/>
     
     
-    <category term="git" scheme="https://nanshuo0814.github.io/tags/git/"/>
+    <category term="git" scheme="https://localhost:4000/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>Linux学习</title>
-    <link href="https://nanshuo0814.github.io/posts/deb5175a"/>
-    <id>https://nanshuo0814.github.io/posts/deb5175a</id>
+    <link href="https://localhost:4000/posts/deb5175a/"/>
+    <id>https://localhost:4000/posts/deb5175a/</id>
     <published>2023-01-06T16:00:00.000Z</published>
     <updated>2023-01-13T16:00:00.000Z</updated>
     
@@ -194,19 +194,19 @@
     
     
     
-    <category term="Linux" scheme="https://nanshuo0814.github.io/categories/Linux/"/>
+    <category term="Linux" scheme="https://localhost:4000/categories/Linux/"/>
     
-    <category term="虚拟机" scheme="https://nanshuo0814.github.io/categories/Linux/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    <category term="虚拟机" scheme="https://localhost:4000/categories/Linux/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
     
     
-    <category term="Linux" scheme="https://nanshuo0814.github.io/tags/Linux/"/>
+    <category term="Linux" scheme="https://localhost:4000/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot的pom.xml依赖</title>
-    <link href="https://nanshuo0814.github.io/posts/932aaee2"/>
-    <id>https://nanshuo0814.github.io/posts/932aaee2</id>
+    <link href="https://localhost:4000/posts/932aaee2/"/>
+    <id>https://localhost:4000/posts/932aaee2/</id>
     <published>2022-12-11T16:00:00.000Z</published>
     <updated>2024-05-15T14:00:49.713Z</updated>
     
@@ -224,17 +224,17 @@
     
     
     
-    <category term="Java" scheme="https://nanshuo0814.github.io/categories/Java/"/>
+    <category term="Java" scheme="https://localhost:4000/categories/Java/"/>
     
     
-    <category term="SpringBoot" scheme="https://nanshuo0814.github.io/tags/SpringBoot/"/>
+    <category term="SpringBoot" scheme="https://localhost:4000/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>Java Tool</title>
-    <link href="https://nanshuo0814.github.io/posts/9da0650b"/>
-    <id>https://nanshuo0814.github.io/posts/9da0650b</id>
+    <link href="https://localhost:4000/posts/9da0650b/"/>
+    <id>https://localhost:4000/posts/9da0650b/</id>
     <published>2022-11-10T16:00:00.000Z</published>
     <updated>2024-05-15T13:59:18.065Z</updated>
     
@@ -249,10 +249,10 @@
     
     
     
-    <category term="Java" scheme="https://nanshuo0814.github.io/categories/Java/"/>
+    <category term="Java" scheme="https://localhost:4000/categories/Java/"/>
     
     
-    <category term="Java" scheme="https://nanshuo0814.github.io/tags/Java/"/>
+    <category term="Java" scheme="https://localhost:4000/tags/Java/"/>
     
   </entry>
   
