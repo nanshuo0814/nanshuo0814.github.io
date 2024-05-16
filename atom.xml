@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>烁烁南光</title>
-  
+  <icon>https://www.gravatar.com/avatar/4e211d0676dad536a887e6106e563a0a</icon>
   
   <link href="https://nanshuo0814.github.io/atom.xml" rel="self"/>
   
@@ -11,7 +11,7 @@
   
   <author>
     <name>南烁</name>
-    
+    <email>nanshuo.icu@qq.com</email>
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
