@@ -6,7 +6,7 @@
   <link href="https://localhost:4000/atom.xml" rel="self"/>
   
   <link href="https://localhost:4000/"/>
-  <updated>2024-05-21T13:53:34.851Z</updated>
+  <updated>2024-07-24T06:18:15.781Z</updated>
   <id>https://localhost:4000/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>React 快速入门学习</title>
+    <link href="https://localhost:4000/posts/d353fced/"/>
+    <id>https://localhost:4000/posts/d353fced/</id>
+    <published>2024-07-23T16:00:00.000Z</published>
+    <updated>2024-07-24T06:18:15.781Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;中文官网：&lt;a href=&quot;https://zh-hans.react.dev/learn&quot;&gt;https://zh-hans.react.dev/learn&lt;/a&gt;&lt;br&gt;使用前端开发工具 VSCode 来学习&lt;/p&gt;
+&lt;h1 id=&quot;React-基础知识&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="https://localhost:4000/categories/React/"/>
+    
+    
+    <category term="React" scheme="https://localhost:4000/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
     <title>十大经典排序算法</title>
     <link href="https://localhost:4000/posts/827ca9cd/"/>
     <id>https://localhost:4000/posts/827ca9cd/</id>
     <published>2024-05-20T16:00:00.000Z</published>
-    <updated>2024-05-21T13:53:34.851Z</updated>
+    <updated>2024-05-21T13:54:26.909Z</updated>
     
     
       
