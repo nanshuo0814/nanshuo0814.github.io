@@ -1,29 +1,43 @@
-name: Docs nanshuo
+
+name: 部署文档
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
 
 jobs:
-  test-docs:
-    name: nanshuo docs
+  deploy-gh-pages:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # 如果你文档需要 Git 子模块，取消注释下一行
+          # submodules: true
 
-      - name: Install pnpm
+      - name: 设置 pnpm
         uses: pnpm/action-setup@v4
         with:
-          run_install: true
+          version: 8
 
-      - name: Setup Node.js
+
+      - name: 设置 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.17.0
+          node-version: 20
           cache: pnpm
 
-      - name: Build test
+      - name: 安装依赖
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+
+      - name: 构建文档
         env:
-          NODE_OPTIONS: --max_old_space_size=4096
+          NODE_OPTIONS: --max_old_space_size=8192
         run: pnpm docs:build
