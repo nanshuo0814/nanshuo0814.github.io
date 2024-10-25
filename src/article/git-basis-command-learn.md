@@ -16,7 +16,7 @@ tag:
 
 
 # 安装Git
-点击<a href="https://git-scm.com/" target="_blank">https://git-scm.com/</a>进入Git官网,进行下安装Git
+<a href="https://git-scm.com" target="_blank">点击</a>进入Git官网,进行下安装Git
 
 # Git常用命令
 
@@ -44,7 +44,7 @@ tag:
 
 # Github的Git命令
 
-进入Github官网：<a href="https://github.com/" target="_blank">https://github.com/</a>
+<a href="https://github.com/" target="_blank">点击</a>进入Github官网：
 
 ## 远程仓库操作
 

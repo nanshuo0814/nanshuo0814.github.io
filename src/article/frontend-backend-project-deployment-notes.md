@@ -35,7 +35,7 @@ tag:
 ### 前端
 
 - 安装nginx服务器
-  参考文章：<a href="https://zhuanlan.zhihu.com/p/425790769" target="_blank">https://zhuanlan.zhihu.com/p/425790769</a>
+  参考文章：
   [Nginx三种安装方式 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/425790769)
   ```bash
   # 查看当前路径
