@@ -7,6 +7,16 @@ export default navbar([
     icon: "globe",
     link: "/resource-nav/",
   },
+  {
+    text: "Java",
+    icon: "java",
+    link: "/java/",
+  },
+  {
+    text: "音乐",
+    icon: "music",
+    link: "/music-man/",
+  },
   // {
   //   text: "生活专栏",
   //   icon: "mug-saucer",
@@ -24,8 +34,8 @@ export default navbar([
   // },
   // {
   //   text: "音乐大厅",
-  //   icon: "music",
-  //   link: "/music/",
+  //   icon: "music-man",
+  //   link: "/music-man/",
   // },
   // {
   //   text: "项目专栏",

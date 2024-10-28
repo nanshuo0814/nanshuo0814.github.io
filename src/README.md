@@ -39,15 +39,14 @@ highlights:
         icon: /weixin.svg
         details: 站长微信公众号
         link: https://ypycdn.nanshuo.icu/nanshuo/wxgzh.jpg
-#      - title: 链接检查
-#        icon: clipboard-check
-#        details: 检查 Markdown 链接
-#        link: https://theme-hope.vuejs.press/zh/guide/markdown/others.html#link-check
+      - title: 多吉云
+        icon: /djy.png
+        details: 多吉云 OSS 储存
+        link: https://console.dogecloud.com/
       - title: 对象储存
         icon: /upyun.png
         details: 又拍云 OSS 储存
-        link: https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral
-      
+        link: https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral    
 copyright: Copyright © 2024 至今<a href="https://www.nanshuo.icu">@南烁</a>
 footer: <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">「 <img src="/icp.png"  style="width:15px;height:15px"/>粤ICP备2024241400号-1 」</a><a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank">「 <img src="/gonganbei.png"  style="width:15px;height:15px"/>粤公网安备44060702000428号 」</a>
 ---

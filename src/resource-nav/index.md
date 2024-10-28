@@ -15,5 +15,13 @@ article: false
 - [实用资源工具导航](practical-tools/)
 
 ::: warning 版权声明
-本文由 [南烁](https://github.com/nanshuo0814) 开发，如有引用、借鉴的请保留版权声明
+本文由 [南烁](https://www.nanshuo.icu) 开发，如有引用、借鉴的请保留版权声明
 :::
+
+[//]: # (<script setup>)
+
+[//]: # (import Music from '@Music';)
+
+[//]: # (</script>)
+
+[//]: # (<Music />)

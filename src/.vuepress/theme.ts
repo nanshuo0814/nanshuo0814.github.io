@@ -61,6 +61,8 @@ export default hopeTheme({
         editLink: "在 GitHub 上编辑此页",
     },
 
+
+
     // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
     // hotReload: true,
 
@@ -145,7 +147,7 @@ export default hopeTheme({
                         // link: "https://theme-hope.vuejs.press/",
                         type: "primary",
                     },
-                    { text: "取消" },
+                    {text: "取消"},
                 ],
             },
             {
@@ -163,7 +165,7 @@ export default hopeTheme({
                         // link: "https://theme-hope.vuejs.press/",
                         type: "primary",
                     },
-                    { text: "取消" },
+                    {text: "取消"},
                 ],
             },
         ],
@@ -220,11 +222,20 @@ export default hopeTheme({
         // 搜索插件
         // https://theme-hope.vuejs.press/zh/config/plugins/search.html
         // https://ecosystem.vuejs.press/zh/plugins/search/docsearch.html
-        docsearch: {
-            apiKey: "730db9648ff7698d70824a5cea22d884",
-            indexName: "nanshuo",
-            appId: "PEELF8U9A8",
-        },
+        // docsearch: {
+        //     apiKey: "730db9648ff7698d70824a5cea22d884",
+        //     indexName: "nanshuo",
+        //     appId: "PEELF8U9A8",
+        // },
+
+        // searchPro: {
+        //     indexContent: true,
+        //     autoSuggestions: false,
+        //     queryHistoryCount: 0,
+        //     resultHistoryCount: -1
+        // },
+        search: true,
+
 
         // https://theme-hope.vuejs.press/zh/config/plugins/comment.html
         // 必须自行生成并在生产环境中使用自己的评论服务
@@ -251,6 +262,7 @@ export default hopeTheme({
                 "VPCard",
                 "VidStack",
                 "XiGua",
+                "AudioPlayer",
             ],
         },
 
