@@ -1,10 +1,7 @@
 ---
 article: false
 ---
-<script setup>
-import Music from '@Music';
-</script>
-<Music />
+
 # AI资源工具导航
 
 ::: tip 说明

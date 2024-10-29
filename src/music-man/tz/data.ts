@@ -4,27 +4,43 @@ import { APlayerMusic} from "../APlayerMusic";
 // 定义要传递给音乐播放器组件的音频数据
 export const data = ref<APlayerMusic[]>([
     {
-        name: "陶喆",
-        artist: "钢琴-羽肿",
-        url: "http://s-gz-8067-ssng.oss.dogecdn.com/music-man/mp3/wlh/%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C.mp3",
-        cover: "http://imge.kugou.com/stdmusic/150/20200715/20200715070007812976.jpg",
+        name: "天天",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E9%99%B6%E5%96%86%20-%20%E5%A4%A9%E5%A4%A9.mp3",
+        cover: "/assets/music-man/tz.png",
         lrc: "",
         theme: "rgb(127, 218, 180)"
     },
     {
-        name: "女儿情",
-        artist: "古筝-付娜",
-        url: "https://sharefs.ali.kugou.com/202110281338/150a7c708ed5e20a47e8a9b80cf1200a/G235/M00/0F/05/i4cBAF77vP2AFdNjAChBofqgQnw363.mp3",
-        cover: "http://imge.kugou.com/stdmusic/150/20200606/20200606220631519630.jpg",
+        name: "小镇姑娘",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E9%99%B6%E5%96%86%20-%20%E5%B0%8F%E9%95%87%E5%A7%91%E5%A8%98.mp3",
+        cover: "/assets/music-man/tz.png",
         lrc: "",
         theme: "rgb(61, 162, 230)"
     },
     {
-        name: "故郷の原風景",
-        artist: "陶笛-犹豫的泥巴",
-        url: "https://sharefs.ali.kugow.com/202110281310/bdb53444846cecd8d45a64e2aab3b6ca/G228/M0A/1B/13/xJQEAF9kx46AZ3IaAEjEvnEtWQw706.mp3",
-        cover: "http://imge.kugou.com/stdmusic/150/20200812/20200812134914113741.jpg",
+        name: "就是爱你",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E9%99%B6%E5%96%86%20-%20%E5%B0%B1%E6%98%AF%E7%88%B1%E4%BD%A0.mp3",
+        cover: "/assets/music-man/tz.png",
         lrc: "",
         theme: "#baf"
-    }
+    },
+    {
+        name: "流沙",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E9%99%B6%E5%96%86%20-%20%E6%B5%81%E6%B2%99.mp3",
+        cover: "/assets/music-man/tz.png",
+        lrc: "",
+        theme: "#baf"
+    },
+    {
+        name: "爱我还是他",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E9%99%B6%E5%96%86%20-%20%E7%88%B1%E6%88%91%E8%BF%98%E6%98%AF%E4%BB%96.mp3",
+        cover: "/assets/music-man/tz.png",
+        lrc: "",
+        theme: "#baf"
+    },
 ]);

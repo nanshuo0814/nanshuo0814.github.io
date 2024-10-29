@@ -8,7 +8,6 @@ import MusicMan from '@MusicMan';
 import { data } from '@source/music-man/wlh/data.ts';
 const a = data;
 </script>
-
 <MusicMan :audioData=a />
 
 ::: warning 版权声明

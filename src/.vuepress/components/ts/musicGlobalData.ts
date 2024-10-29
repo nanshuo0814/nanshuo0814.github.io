@@ -12,27 +12,67 @@ export interface APlayerMusic {
 // 定义要传递给音乐播放器组件的音频数据
 export const data = ref<APlayerMusic[]>([
     {
-        name: "全局数据展示",
-        artist: "撒旦王",
-        url: "http://s-gz-8067-ssng.oss.dogecdn.com/music-man/mp3/wlh/%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C.mp3",
-        cover: "http://imge.kugou.com/stdmusic/150/20200715/20200715070007812976.jpg",
-        lrc: "",
+        name: "我们的歌",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
         theme: "rgb(127, 218, 180)"
     },
     {
-        name: "女儿情",
-        artist: "古筝-付娜",
-        url: "https://sharefs.ali.kugou.com/202110281338/150a7c708ed5e20a47e8a9b80cf1200a/G235/M00/0F/05/i4cBAF77vP2AFdNjAChBofqgQnw363.mp3",
-        cover: "http://imge.kugou.com/stdmusic/150/20200606/20200606220631519630.jpg",
-        lrc: "",
-        theme: "rgb(61, 162, 230)"
+        name: "唯一",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E7%8E%8B%E5%8A%9B%E5%AE%8F%E3%80%81%E5%BC%A0%E9%9D%93%E9%A2%96%20-%20%E5%94%AF%E4%B8%80.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E5%94%AF%E4%B8%80_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "#baf"
     },
     {
-        name: "故郷の原風景",
-        artist: "陶笛-犹豫的泥巴",
-        url: "https://sharefs.ali.kugow.com/202110281310/bdb53444846cecd8d45a64e2aab3b6ca/G228/M0A/1B/13/xJQEAF9kx46AZ3IaAEjEvnEtWQw706.mp3",
-        cover: "http://imge.kugou.com/stdmusic/150/20200812/20200812134914113741.jpg",
-        lrc: "",
-        theme: "#baf"
-    }
+        name: "Everything",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/Everything.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/Everything_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "天地龙鳞",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E5%A4%A9%E5%9C%B0%E9%BE%99%E9%B3%9E.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E5%A4%A9%E5%9C%B0%E9%BE%99%E9%B3%9E_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "爱错",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E7%88%B1%E9%94%99.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E7%88%B1%E9%94%99-%E7%8E%8B%E5%8A%9B%E5%AE%8F.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "春雨里洗过的太阳",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E6%98%A5%E9%9B%A8%E9%87%8C%E6%B4%97%E8%BF%87%E7%9A%84%E5%A4%AA%E9%98%B3.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E6%98%A5%E9%9B%A8%E9%87%8C%E6%B4%97%E8%BF%87%E7%9A%84%E5%A4%AA%E9%98%B3_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "心跳",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E5%BF%83%E8%B7%B3.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E5%BF%83%E8%B7%B3_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "脚本",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E8%84%9A%E6%9C%AC.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E8%84%9A%E6%9C%AC_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
 ]);
