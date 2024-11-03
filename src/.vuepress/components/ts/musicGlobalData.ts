@@ -44,6 +44,14 @@ export const data = ref<APlayerMusic[]>([
         theme: "rgb(127, 218, 180)"
     },
     {
+        name: "就是现在",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E5%B0%B1%E6%98%AF%E7%8E%B0%E5%9C%A8.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E5%B0%B1%E6%98%AF%E7%8E%B0%E5%9C%A8_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
         name: "爱错",
         artist: "王力宏",
         url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E7%88%B1%E9%94%99.mp3",
@@ -73,6 +81,46 @@ export const data = ref<APlayerMusic[]>([
         url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E8%84%9A%E6%9C%AC.mp3",
         cover: "/assets/music-man/wlh.png",
         lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E8%84%9A%E6%9C%AC_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "二十二",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E4%BA%8C%E5%8D%81%E4%BA%8C.mp3",
+        cover: "/assets/music-man/tz.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/tz/lrc/%E4%BA%8C%E5%8D%81%E4%BA%8C_-_%E9%99%B6%E5%96%86_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "找自己",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E6%89%BE%E8%87%AA%E5%B7%B1.mp3",
+        cover: "/assets/music-man/tz.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/tz/lrc/%E6%89%BE%E8%87%AA%E5%B7%B1_-_%E9%99%B6%E5%96%86_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "蝴蝶",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E8%9D%B4%E8%9D%B6.mp3",
+        cover: "/assets/music-man/tz.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/tz/lrc/%E8%9D%B4%E8%9D%B6_-_%E9%99%B6%E5%96%86_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "普通朋友",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E6%99%AE%E9%80%9A%E6%9C%8B%E5%8F%8B.mp3",
+        cover: "/assets/music-man/tz.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/tz/lrc/%E6%99%AE%E9%80%9A%E6%9C%8B%E5%8F%8B_-_%E9%99%B6%E5%96%86_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
+        name: "天天",
+        artist: "陶喆",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/tz/%E9%99%B6%E5%96%86%20-%20%E5%A4%A9%E5%A4%A9.mp3",
+        cover: "/assets/music-man/tz.png",
+        lrc: "",
         theme: "rgb(127, 218, 180)"
     },
 ]);

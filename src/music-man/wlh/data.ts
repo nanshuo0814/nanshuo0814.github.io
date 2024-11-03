@@ -12,6 +12,14 @@ export const data = ref<APlayerMusic[]>([
         theme: "rgb(127, 218, 180)"
     },
     {
+        name: "就是现在",
+        artist: "王力宏",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E5%B0%B1%E6%98%AF%E7%8E%B0%E5%9C%A8.mp3",
+        cover: "/assets/music-man/wlh.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/lrc/%E5%B0%B1%E6%98%AF%E7%8E%B0%E5%9C%A8_-_%E7%8E%8B%E5%8A%9B%E5%AE%8F_www.eev3.com.lrc",
+        theme: "rgb(127, 218, 180)"
+    },
+    {
         name: "天地龙鳞",
         artist: "王力宏",
         url: "https://djycdn.nanshuo.icu/music-man/mp3/wlh/%E5%A4%A9%E5%9C%B0%E9%BE%99%E9%B3%9E.mp3",

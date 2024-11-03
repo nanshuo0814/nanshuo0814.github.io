@@ -148,6 +148,14 @@ export const data = ref<APlayerMusic[]>([
         theme: "#baf"
     },
     {
+        name: "俯冲的灵魂",
+        artist: "林俊杰 And 动力火车",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/ljj/%E4%BF%AF%E5%86%B2%E7%9A%84%E7%81%B5%E9%AD%82.mp3",
+        cover: "/assets/music-man/ljj.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/ljj/lrc/%E4%BF%AF%E5%86%B2%E7%9A%84%E7%81%B5%E9%AD%82_-_%E5%8A%A8%E5%8A%9B%E7%81%AB%E8%BD%A6&%E6%9E%97%E4%BF%8A%E6%9D%B0_www.eev3.com.lrc",
+        theme: "#baf"
+    },
+    {
         name: "将故事写成我们",
         artist: "林俊杰",
         url: "https://djycdn.nanshuo.icu/music-man/mp3/ljj/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E5%B0%86%E6%95%85%E4%BA%8B%E5%86%99%E6%88%90%E6%88%91%E4%BB%AC.mp3",
@@ -177,6 +185,14 @@ export const data = ref<APlayerMusic[]>([
         url: "https://djycdn.nanshuo.icu/music-man/mp3/ljj/%E6%9E%97%E4%BF%8A%E6%9D%B0%20-%20%E5%BF%83%E5%A2%99.mp3",
         cover: "/assets/music-man/ljj.png",
         lrc: "",
+        theme: "#baf"
+    },
+    {
+        name: "逆光白",
+        artist: "林俊杰",
+        url: "https://djycdn.nanshuo.icu/music-man/mp3/ljj/%E9%80%86%E5%85%89%E7%99%BD.mp3",
+        cover: "/assets/music-man/ljj.png",
+        lrc: "https://djycdn.nanshuo.icu/music-man/mp3/ljj/lrc/%E9%80%86%E5%85%89%E7%99%BD_-_%E6%9E%97%E4%BF%8A%E6%9D%B0_www.eev3.com.lrc",
         theme: "#baf"
     },
     {

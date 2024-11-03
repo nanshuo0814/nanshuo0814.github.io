@@ -47,6 +47,7 @@ export default hopeTheme({
     encrypt: {
         config: {
             "/article/chatgpt-register-course.html": ["nanshuo"],
+            "/music-man/": ["nanshuo.icu"],
         },
     },
 
@@ -198,8 +199,6 @@ export default hopeTheme({
             json: true,
             atom: true,
             rss: true,
-            hostname: "https://www.nanshuo.icu",
-            devHostname: "http://localhost:8080"
         },
 
         // https://ecosystem.vuejs.press/zh/plugins/markdown/markdown-tab.html
@@ -208,7 +207,6 @@ export default hopeTheme({
 
         // https://ecosystem.vuejs.press/zh/plugins/seo/sitemap/config.html
         sitemap: {
-            hostname: "https://www.nanshuo.icu",
             devServer: true,
             devHostname: "https://localhost:8080"
         },
@@ -262,7 +260,6 @@ export default hopeTheme({
                 "VPCard",
                 "VidStack",
                 "XiGua",
-                "AudioPlayer",
             ],
         },
 
