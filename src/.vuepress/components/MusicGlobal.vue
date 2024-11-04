@@ -20,7 +20,7 @@ const props = defineProps({
 const info = ref({
   fixed: true, // 开启吸底模式
   listFolded: true, // 折叠歌曲列表
-  lrcType: 3,
+  lrcType: 1,
   autoplay: false, // 开启自动播放
   preload: "auto", // 自动预加载歌曲
   loop: "all", // 播放循环模式、all全部循环 one单曲循环 none只播放一次
