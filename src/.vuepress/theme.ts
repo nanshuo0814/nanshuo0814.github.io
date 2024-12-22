@@ -140,15 +140,15 @@ export default hopeTheme({
                 confirm: true,
                 // 正则表达式以和所有路由测试匹配
                 // match: "",
-                title: "欢迎来到本站",
-                content: "这是仅仅是一个公告",
+                title: "欢迎来到本站-烁烁南光",
+                content: "您好小友！感谢您访问我的个人网站。在这里，我分享我的学习、兴趣、项目以及生活中的点滴。无论您是朋友，还是初次造访的访客，都希望您能在这里找到一些有趣的东西！请随意浏览我的作品和博客，期待您的反馈与交流。再次感谢您的到来！",
                 actions: [
                     {
-                        text: "确认",
-                        // link: "https://theme-hope.vuejs.press/",
+                        text: "去站长博客逛逛",
+                        link: "/blog",
                         type: "primary",
                     },
-                    {text: "取消"},
+                    { text: "我已阅读"},
                 ],
             },
             {
@@ -159,10 +159,10 @@ export default hopeTheme({
                 // 正则表达式以和所有路由测试匹配
                 // match: "",
                 title: "欢迎来到站长博客",
-                content: "这是仅仅是一个公告",
+                content: "有朋自远方来，不亦乐乎！",
                 actions: [
                     {
-                        text: "确认",
+                        text: "我已阅读",
                         // link: "https://theme-hope.vuejs.press/",
                         type: "primary",
                     },

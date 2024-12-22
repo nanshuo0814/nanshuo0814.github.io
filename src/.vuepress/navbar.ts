@@ -3,50 +3,40 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   // "/",
   {
+    text: "主页",
+    icon: "home",
+    link: "/",
+  },
+  {
     text: "资源导航",
-    icon: "globe",
+    icon: "dice",
     link: "/resource-nav/",
   },
   {
-    text: "Java",
-    icon: "java",
+    text: "Java宝典",
+    icon: "mug-saucer",
     link: "/java/",
   },
   {
-    text: "音乐",
+    text: "音乐点播",
     icon: "music",
     link: "/music-man/",
   },
-  // {
-  //   text: "生活专栏",
-  //   icon: "mug-saucer",
-  //   link: "/life/",
-  // },
-  // {
-  //   text: "面试专栏",
-  //   icon: "graduation-cap",
-  //   link: "/interview/",
-  // },
-  // {
-  //   text: "书籍专栏",
-  //   icon: "book",
-  //   link: "/book/",
-  // },
-  // {
-  //   text: "音乐大厅",
-  //   icon: "music-man",
-  //   link: "/music-man/",
-  // },
-  // {
-  //   text: "项目专栏",
-  //   icon: "dice",
-  //   link: "/project/",
-  // },
   {
-    text: "站长博客",
+    text: "网站分析",
+    icon: "globe",
+    link: "/analyse/",
+  },
+  {
+    text: "博客首页",
     icon: "blog",
     link: "/blog",
-  }
+  },
+  // {
+  //   text: "生活专栏",
+  //   icon: "life",
+  //   link: "/life/",
+  // },
   // {
   //   text: "指南",
   //   icon: "lightbulb",

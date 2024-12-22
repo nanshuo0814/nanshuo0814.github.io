@@ -15,7 +15,7 @@ actions:
 #    #    icon: lightbulb
 #    link: /quick-start/
 #    type: primary
-  - text: 站长博客
+  - text: 博客
     type: primary
     link: /blog
   - text: 资源导航
