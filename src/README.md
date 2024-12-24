@@ -15,7 +15,7 @@ actions:
 #    #    icon: lightbulb
 #    link: /quick-start/
 #    type: primary
-  - text: 博客
+  - text: 博客首页
     type: primary
     link: /blog
   - text: 资源导航
@@ -37,15 +37,15 @@ highlights:
         link: https://theme-hope.vuejs.press/zh/
       - title: 公众号
         icon: /weixin.svg
-        details: 站长微信公众号
+        details: 微信公众号二维码
         link: https://ypycdn.nanshuo.icu/nanshuo/wxgzh.jpg
       - title: 多吉云
         icon: /djy.png
-        details: 多吉云 OSS 储存
+        details: 视频云、对象储存
         link: https://console.dogecloud.com/
-      - title: 对象储存
+      - title: 又拍云
         icon: /upyun.png
-        details: 又拍云 OSS 储存
+        details: 云存储、CDN加速
         link: https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral    
 copyright: Copyright © 2024 至今<a href="https://www.nanshuo.icu">@南烁</a>
 footer: <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">「 <img src="/icp.png"  style="width:15px;height:15px"/>粤ICP备2024241400号-1 」</a><a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank">「 <img src="/gonganbei.png"  style="width:15px;height:15px"/>粤公网安备44060702000428号 」</a>

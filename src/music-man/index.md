@@ -36,7 +36,7 @@ link="/music-man/zjl/"
 title="陶喆"
 desc="陶喆（David Tao），1969 年 7 月 11 日出生于中国香港，毕业于美国加利福尼亚大学洛杉矶分校，是华语流行乐男歌手、音乐制作人、词曲创作人。"
 logo="/assets/music-man/tz.png"
-link="//music-man/tz/"
+link="/music-man/tz/"
 />
 
 ::: warning 版权声明

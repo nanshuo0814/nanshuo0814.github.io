@@ -13,7 +13,7 @@ export default navbar([
     link: "/resource-nav/",
   },
   {
-    text: "Java宝典",
+    text: "Java八股文",
     icon: "mug-saucer",
     link: "/java/",
   },

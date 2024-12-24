@@ -70,6 +70,15 @@ article: false
         "link": "https://tools.liumingye.cn/music/#/",
     "background": "rgba(253, 230, 138, 0.15)"  }
 ```
+```component VPCard
+{
+        "logo": "http://www.eev3.com/images/logo.png",
+        "title": "易听音乐网",
+        "desc": "免费音乐在线听和下载mp3音频和歌词",
+        "link": "http://www.eev3.com/",
+    "background": "rgba(253, 230, 138, 0.15)"  }
+```
+
 
 ## 知名搜索引擎
 ```component VPCard
