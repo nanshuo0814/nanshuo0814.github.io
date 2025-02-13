@@ -24,7 +24,7 @@ export default navbar([
   },
   {
     text: "网站分析",
-    icon: "globe",
+    icon: "television",
     link: "/analyse/",
   },
   {

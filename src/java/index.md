@@ -1,20 +1,34 @@
 ---
-title: Java八股文 pdf
+title: Java面试八股文
 article: false
 ---
 
-
 ::: tip 说明
-收集互联网上关于 **Java** 面试的各种优质八股文面试题的PDF，方便大家查阅，如有侵权请联系站长删除！！！
+收集关于Java常见且热门的八股文面试题，包括Java基础、集合、并发、JVM、MySQL、Redis、Spring、中间件、计算机网络、操作系统、数据结构与算法等等
 :::
 
-## 大厂面试指南
-<PDF url="https://ypycdn.nanshuo.icu/pdf/%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97.pdf" />
+<!-- # Java基础
 
-## 1000道互联网Java面试题
-<PDF url="https://ypycdn.nanshuo.icu/pdf/1000%E9%81%93%E4%BA%92%E8%81%94%E7%BD%91Java%E6%9E%B6%E6%9E%84%E5%B8%88%E9%9D%A2%E8%AF%95%E9%A2%98485%E9%A1%B5.pdf" />
+# Java集合 -->
 
-<br/>
+
+<!-- # Java并发
+
+# Java虚拟机（JVM）
+
+# MySQL
+
+# Redis
+
+# Spring
+
+# 中间件
+
+# 计算机网络
+
+# 操作系统
+
+# 数据结构与算法 -->
 
 ::: warning 版权声明
 本文由 [南烁](https://www.nanshuo.icu) 开发，如有引用、借鉴的请保留版权声明

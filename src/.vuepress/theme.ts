@@ -17,7 +17,7 @@ export default hopeTheme({
 
     logo: "/logo.png",
 
-    repo: "nanshuo0814/nanshuo0814.github.io",
+    repo: "nanshuo0814",
 
     docsDir: "src",
     // 是否显示页面最后更新时间
@@ -46,8 +46,8 @@ export default hopeTheme({
     // 加密配置https://theme-hope.vuejs.press/zh/guide/feature/encrypt.html
     encrypt: {
         config: {
-            "/article/chatgpt-register-course.html": ["nanshuo"],
-            "/music-man/": ["nanshuo.icu"],
+            "/article/chatgpt-register-course.html": ["chatgpt"],
+            "/music-man/": ["music"],
         },
     },
 
@@ -68,7 +68,7 @@ export default hopeTheme({
     // hotReload: true,
 
     // 全屏
-    // fullscreen: true,
+    fullscreen: true,
     // 暗黑模式切换
     darkmode: "toggle",
 

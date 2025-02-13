@@ -21,6 +21,15 @@ article: false
         "background": "rgba(253, 230, 138, 0.15)"
       }
 ```
+```component VPCard
+{
+        "logo": "https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg",
+        "title": "Gemini",
+        "desc": "是一个大型语言模型，由 Google 训练",
+        "link": "https://gemini.google.com/app",
+        "background": "rgba(253, 230, 138, 0.15)"
+      }
+```
 
 ```component VPCard
       {
@@ -32,6 +41,47 @@ article: false
       }
 ```
 ## 国内AI聊天大模型
+```component VPCard
+{
+        "logo": "https://chat.deepseek.com/favicon.svg",
+        "title": "DeepSeek",
+        "desc": "由中国的深度求索（DeepSeek）公司开发的智能助手DeepSeek-V3",
+        "link": "https://chat.deepseek.com/",
+        "background": "rgba(253, 230, 138, 0.15)"
+      }
+```
+```component VPCard
+{
+        "logo": "https://xj-psd-1258344703.cos.ap-guangzhou.myqcloud.com/image/hunyuan/brand2024/logo64@3x.png",
+        "title": "元宝",
+        "desc": "基于腾讯自研的混元大模型的AI应用",
+        "link": "https://yuanbao.tencent.com/",
+        "background": "rgba(253, 230, 138, 0.15)"
+      }
+```
+
+
+```component VPCard
+ 
+      {
+        "logo": "https://statics.moonshot.cn/kimi-chat/favicon.ico",
+        "title": "Kimi Chat",
+        "desc": "月之暗面的聊天机器人",
+        "link": "https://kimi.moonshot.cn/",
+        "background": "rgba(253, 230, 138, 0.15)"
+      }
+```
+
+```component VPCard
+{
+        "logo": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/web/static/image/logo-icon-white-bg.f3acc228.png",
+        "title": "豆包",
+        "desc": "字节跳动对话助手",
+        "link": "https://www.doubao.com/chat/",
+        "background": "rgba(253, 230, 138, 0.15)"
+      }
+```
+
 ```component VPCard
 {
         "logo": "https://xinghuo.xfyun.cn/spark-icon.ico",
@@ -63,26 +113,6 @@ article: false
 }
 ```
 
-```component VPCard
- 
-      {
-        "logo": "https://statics.moonshot.cn/kimi-chat/favicon.ico",
-        "title": "Kimi Chat",
-        "desc": "月之暗面的聊天机器人",
-        "link": "https://kimi.moonshot.cn/",
-        "background": "rgba(253, 230, 138, 0.15)"
-      }
-```
-
-```component VPCard
-{
-        "logo": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/web/static/image/logo-icon-white-bg.f3acc228.png",
-        "title": "豆包",
-        "desc": "字节跳动对话助手",
-        "link": "https://www.doubao.com/chat/",
-        "background": "rgba(253, 230, 138, 0.15)"
-      }
-```
 
 ```component VPCard
 {
