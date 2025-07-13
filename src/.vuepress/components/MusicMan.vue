@@ -7,7 +7,7 @@
 
 <script setup>
 import {ref, onMounted} from 'vue';
-import "APlayer/dist/APlayer.min.css";
+import "aplayer/dist/APlayer.min.css";
 
 // 通过 props 接收从父组件传递过来的音频数据
 const props = defineProps({
