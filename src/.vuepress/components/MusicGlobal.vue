@@ -6,7 +6,7 @@
 <script setup>
 import {ref, onMounted} from 'vue';
 // import APlayer from "APlayer";
-import "APlayer/dist/APlayer.min.css";
+import "aplayer/dist/APlayer.min.css";
 
 // 通过props接收从父组件传递过来的音频数据
 const props = defineProps({
@@ -30,7 +30,7 @@ const info = ref({
 // 初始化播放器函数
 const initAudio = async () => {
   if (typeof window !== 'undefined') {
-    const {default: APlayer} = await import("APlayer"); // 动态导入 APlayer
+    const {default: APlayer} = await import("aplayer"); // 动态导入 APlayer
     // https://aplayer.js.org/#/zh-Hans/
     // 创建一个音乐播放器实例，并挂载到DOM上，同时进行相关配置
     const ap = new APlayer({
