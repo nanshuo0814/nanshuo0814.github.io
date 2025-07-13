@@ -7,7 +7,7 @@
 
 <script setup>
 import {ref, onMounted} from 'vue';
-import "APlayer/dist/APlayer.min.css";
+import "aplayer/dist/APlayer.min.css";
 
 // 通过 props 接收从父组件传递过来的音频数据
 const props = defineProps({
@@ -33,7 +33,7 @@ const info = ref({
 const initAudio = async () => {
   // 仅在客户端环境加载 APlayer
   if (typeof window !== 'undefined') {
-    const {default: APlayer} = await import("APlayer"); // 动态导入 APlayer
+    const {default: APlayer} = await import("aplayer"); // 动态导入 APlayer
     new APlayer({
       container: document.getElementById("aplayer-man"),
       audio: props.audioData, // 使用从父组件接收的音频数据
