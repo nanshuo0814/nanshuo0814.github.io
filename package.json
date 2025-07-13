@@ -10,11 +10,13 @@
     "docs:dev": "vuepress-vite dev src",
     "docs:update-package": "pnpm dlx vp-update"
   },
+  "dependencies": {
+    "aplayer": "^1.10.1"
+  },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.18",
     "@vuepress/plugin-feed": "2.0.0-rc.57",
     "@vuepress/plugin-search": "2.0.0-rc.55",
-    "aplayer": "^1.10.1",
     "kotlin-playground": "^1.30.0",
     "markmap-lib": "^0.17.2",
     "markmap-toolbar": "^0.17.2",
