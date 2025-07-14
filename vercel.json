@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api_proxy?target=https://heimuer.tv/$1" },
+    { "source": "/ikun/(.*)", "destination": "/api_proxy?target=https://ikunzy.net/$1" },
+    { "source": "/subo/(.*)", "destination": "/api_proxy?target=https://www.suboziyuan.net/$1" },
+    { "source": "/huawei/(.*)", "destination": "/api_proxy?target=https://cjhwba.com/$1" },
+    { "source": "/jisu/(.*)", "destination": "/api_proxy?target=https://www.jisuzy.com/$1" },
+    { "source": "/360/(.*)", "destination": "/api_proxy?target=https://360zy5.com/$1" },
+    { "source": "/wolong/(.*)", "destination": "/api_proxy?target=https://wolongzyw.com/$1" }
+  ]
+}
